@@ -5,8 +5,23 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RotRoof"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
-    <Grid>
+        xmlns:m="clr-namespace:Microsoft.Maps.MapControl.WPF;assembly=Microsoft.Maps.MapControl.WPF"
+        Title="MainWindow" Height="720" Width="1000">
+
+    <DockPanel LastChildFill="True">
+        <Label Content="Als je aids bij shit toevoegd krijg je" DockPanel.Dock="Top" Background="AliceBlue"/>
+        <Label Content="shaids!" DockPanel.Dock="Bottom" Background="LightSteelBlue"/>
+
+        <StackPanel DockPanel.Dock="Left" Background="Cornsilk" MinWidth="200">
+            <Button Content="Button 1" Margin="5" Padding="50"/>
+            <Button Content="Button 2" Margin="5"/>
+            <Button Content="Button 3" Margin="5"/>
+            <Button Content="Button 4" Margin="5"/>
+        </StackPanel>
+        <m:Map  DockPanel.Dock="Top" MinHeight="500" CredentialsProvider="AtpRhAYzndch3AqUr1PzBZN3cmcnOremPqynI7oxAuwTya6SQ1582q7N0nBXSucT" Mode="Road" Center="51.911380, 4.483526" ZoomLevel="12" >
+        </m:Map>
+    </DockPanel>
+
+    
         
-    </Grid>
 </Window>
