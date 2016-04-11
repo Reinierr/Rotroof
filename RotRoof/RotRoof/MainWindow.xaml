@@ -6,29 +6,38 @@
         xmlns:local="clr-namespace:RotRoof"
         mc:Ignorable="d"
         xmlns:m="clr-namespace:Microsoft.Maps.MapControl.WPF;assembly=Microsoft.Maps.MapControl.WPF"
-        Title="MainWindow" Height="720" Width="1000">
-    <Border Background="White" BorderBrush="green" BorderThickness="6">
+        Title="RotRoof" Height="720" Width="1000">
+    <Window.Resources>
+        <DataTemplate DataType="{x:Type local:MapViewModel}">
+            <local:MapView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type local:ChartViewModel}">
+            <local:ChartView/>
+        </DataTemplate>
+    </Window.Resources>
+    <Border Background="White" BorderBrush="#008651" BorderThickness="6">
 
         <DockPanel LastChildFill="True">
 
-            <Border Background="White" BorderBrush="green" BorderThickness="0,0,6,0"  >
+            <Border Background="White" BorderBrush="#008651" BorderThickness="0,0,6,0"  >
             <StackPanel DockPanel.Dock="Left" Background="White" MinWidth="250">
            
-                <StackPanel Orientation="Horizontal" >
-                    <Button Margin="5" Padding="30" MinWidth="130">SQL 1</Button>
-                    <Button Margin="5" Padding="30" MinWidth="130" >SQL 2</Button>
+                <StackPanel Orientation="Horizontal" x:Name="navigation">
+                        <Button Margin="5" Padding="30" MinWidth="130" Background="#008651" Foreground="White" Content="Map" Command="{Binding MapCommand}"></Button>
+                        <Button Margin="5" Padding="30" MinWidth="130" Background="#008651" Foreground="White" Content="Chart" Command="{Binding ChartCommand}"></Button>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" MinHeight="10" >
-                    <Button Margin="5"  MinHeight="10" MinWidth="130">CHART 1</Button>
-                    <Button Margin="5" Padding="30" MinWidth="130" >CHART 2</Button>
+                        <Button Margin="5"  MinHeight="10" MinWidth="130" Background="White" Foreground="#008651" BorderBrush="#008651" BorderThickness="3">CHART 1</Button>
+                        <Button Margin="5" Padding="30" MinWidth="130" Background="White" Foreground="#008651" BorderBrush="#008651" BorderThickness="3">CHART 2</Button>
                 </StackPanel>
 
  
             </StackPanel>
             </Border>
+            <ContentControl x:Name="Pages" Content="{Binding SelectedViewModel}"/>
+            
 
-            <m:Map  DockPanel.Dock="Top" MinHeight="500" CredentialsProvider="AtpRhAYzndch3AqUr1PzBZN3cmcnOremPqynI7oxAuwTya6SQ1582q7N0nBXSucT" Mode="Road" Center="51.911380, 4.483526" ZoomLevel="12" >
-            </m:Map>
+
 
         </DockPanel>
     </Border>

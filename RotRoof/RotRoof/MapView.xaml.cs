@@ -10,21 +10,18 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace RotRoof
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for MapView.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MapView : UserControl
     {
-        public MainWindow()
+        public MapView()
         {
             InitializeComponent();
-            this.DataContext = new NavigationViewModel();
         }
-
     }
 }
