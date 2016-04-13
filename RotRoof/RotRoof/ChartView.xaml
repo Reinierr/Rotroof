@@ -5,7 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RotRoof"
         mc:Ignorable="d">
-    <Grid>
-        <TextBox>ReinierChart.api</TextBox>
+    <Grid  Height="700" Width="750" >
+        <Grid Name="myGridLeft" HorizontalAlignment="Left" Width="35" Margin="0,18,0,63"/>
+        <Grid HorizontalAlignment="Right" VerticalAlignment="Bottom" Height="35" Margin="0,0,10,23"  Width="700"  Name="myGridBottom" />
+
+        <Grid Height="589" VerticalAlignment="Top" Background="White" Name="myGridMain" Margin="40,48,7,0"/>
+
+
+
     </Grid>
 </UserControl>
