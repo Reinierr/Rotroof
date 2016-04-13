@@ -46,8 +46,8 @@
                                     </Setter>
                                     <Style.Triggers>
                                         <Trigger Property="IsMouseOver" Value="True">
-                                            <Setter Property="Background" Value="White"/>
-                                            <Setter Property="Foreground" Value="#008651"/>
+                                            <Setter Property="Background" Value="#00B56D"/>
+                                            <Setter Property="Foreground" Value="White"/>
                                             <Setter Property="BorderBrush" Value="Red"/>
                                             <Setter Property="BorderThickness" Value="3"/>
                                             
@@ -74,8 +74,8 @@
                                     </Setter>
                                     <Style.Triggers>
                                         <Trigger Property="IsMouseOver" Value="True">
-                                            <Setter Property="Background" Value="White"/>
-                                            <Setter Property="Foreground" Value="#008651"/>
+                                            <Setter Property="Background" Value="#00B56D"/>
+                                            <Setter Property="Foreground" Value="White"/>
                                             <Setter Property="BorderBrush" Value="Red"/>
                                             <Setter Property="BorderThickness" Value="3"/>
                                             
@@ -89,9 +89,63 @@
                         </Button>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" MinHeight="10" >
-                        <Button Margin="5"  MinHeight="10" MinWidth="130" Background="White" Foreground="#008651" BorderBrush="#008651" BorderThickness="3">CHART 1</Button>
-                        <Button Margin="5" Padding="30" MinWidth="130" Background="White" Foreground="#008651" BorderBrush="#008651" BorderThickness="3">CHART 2</Button>
-                </StackPanel>
+                        <Button Margin="5" Padding="30" MinWidth="130" MinHeight="80" Content="Chart" Command="{Binding ChartCommand}">
+                            <Button.Style>
+                                <Style TargetType="{x:Type Button}">
+                                    <Setter Property="Background" Value="#008651" />
+                                    <Setter Property="Foreground" Value="White"/>
+                                    <Setter Property="BorderBrush" Value="DarkGreen"/>
+                                    <Setter Property="BorderThickness" Value="1"/>
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="{x:Type Button}">
+                                                <Border Background="{TemplateBinding Background}" BorderBrush="#008651" BorderThickness="3" >
+                                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                                </Border>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background" Value="#00B56D"/>
+                                            <Setter Property="Foreground" Value="White"/>
+                                            <Setter Property="BorderBrush" Value="Red"/>
+                                            <Setter Property="BorderThickness" Value="3"/>
+
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Button.Style>
+                        </Button>
+                        <Button Margin="5" Padding="30" MinWidth="130" MinHeight="80" Content="Chart" Command="{Binding ChartCommand}">
+                            <Button.Style>
+                                <Style TargetType="{x:Type Button}">
+                                    <Setter Property="Background" Value="#008651" />
+                                    <Setter Property="Foreground" Value="White"/>
+                                    <Setter Property="BorderBrush" Value="DarkGreen"/>
+                                    <Setter Property="BorderThickness" Value="1"/>
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="{x:Type Button}">
+                                                <Border Background="{TemplateBinding Background}" BorderBrush="#008651" BorderThickness="3" >
+                                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                                </Border>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background" Value="#00B56D"/>
+                                            <Setter Property="Foreground" Value="White"/>
+                                            <Setter Property="BorderBrush" Value="Red"/>
+                                            <Setter Property="BorderThickness" Value="3"/>
+
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Button.Style>
+                        </Button>
+                    </StackPanel>
 
  
             </StackPanel>
