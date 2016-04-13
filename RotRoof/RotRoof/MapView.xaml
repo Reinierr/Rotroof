@@ -8,7 +8,10 @@
         xmlns:m="clr-namespace:Microsoft.Maps.MapControl.WPF;assembly=Microsoft.Maps.MapControl.WPF">
     
     <Grid>
-        <m:Map  DockPanel.Dock="Top" MinHeight="525" CredentialsProvider="AtpRhAYzndch3AqUr1PzBZN3cmcnOremPqynI7oxAuwTya6SQ1582q7N0nBXSucT" Mode="Road" Center="51.911380, 4.483526" ZoomLevel="12" >
+
+        <m:Map x:Name="myMap"  DockPanel.Dock="Top" MinHeight="525" CredentialsProvider="AtpRhAYzndch3AqUr1PzBZN3cmcnOremPqynI7oxAuwTya6SQ1582q7N0nBXSucT" Mode="Road" Center="51.911380, 4.483526" ZoomLevel="12" >
+
+
         </m:Map>
     </Grid>
 </UserControl>
