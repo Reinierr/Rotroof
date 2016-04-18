@@ -86,12 +86,14 @@ namespace RotRoof
         public void CreateRoundPoly(double longitude, double latitude )
         {
             newPolygon2 = new MapPolygon();
+
             // Defines the polygon fill details
             newPolygon2.Locations = new LocationCollection();
             newPolygon2.Fill = new SolidColorBrush(Colors.Green);
             newPolygon2.Stroke = new SolidColorBrush(Colors.DarkGreen);
             newPolygon2.StrokeThickness = 3;
             newPolygon2.Opacity = 0.4;
+
             //Set focus back to the map so that +/- work for zoom in/out
             MapWithPolygon.Focus();
 
