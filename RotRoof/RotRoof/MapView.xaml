@@ -26,11 +26,12 @@
 	<Button x:Name="button1" Content="Create Polygon Func()" Width="135" Click="CreatePoly"/>
                 	</InlineUIContainer></TextBlock>
             <m:MapLayer x:Name="NewPolygonLayer">
-               
+
 
             </m:MapLayer>
         </m:Map>
 
-        
+
     </Grid>
 </UserControl>
+
