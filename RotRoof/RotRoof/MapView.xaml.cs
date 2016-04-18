@@ -35,20 +35,8 @@ namespace RotRoof
         public MapView()
         {
 
-            //ConsoleManager.Show();
-            //ConsoleManager.Show();
-
-            InitializeComponent();
-            
-            
-            //Set focus to map
-            MapWithPolygon.Focus();
-            
-            
-            
-
-            /*newPolygon.Locations = new LocationCollection()
-            {
+        private void MapWithPushpins_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
                 //51.917460, 4.485536
                 //51.9174, 4.4855 center
                 /*
@@ -63,8 +51,8 @@ namespace RotRoof
                 76 , 53
                 78 , 55
 
-                
-                
+
+
                 
                 
                 //Y,X
@@ -245,7 +233,7 @@ namespace RotRoof
             public static bool HasConsole
             {
                 get { return GetConsoleWindow() != IntPtr.Zero; }
-            }
+        }
 
             /// <summary>
             /// Creates a new console instance if the process is not attached to a console already.
@@ -268,12 +256,12 @@ namespace RotRoof
             {
                 //#if DEBUG
                 if (HasConsole)
-                {
+        {
                     SetOutAndErrorNull();
                     FreeConsole();
                 }
                 //#endif
-            }
+        }
 
             public static void Toggle()
             {
@@ -288,7 +276,7 @@ namespace RotRoof
             }
 
             static void InvalidateOutAndError()
-            {
+        {
                 Type type = typeof(System.Console);
 
                 System.Reflection.FieldInfo _out = type.GetField("_out",
