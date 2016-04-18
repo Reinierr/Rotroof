@@ -16,6 +16,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using RotRoof.GeocodeService;
 
 
 namespace RotRoof
@@ -28,7 +29,7 @@ namespace RotRoof
         // The user defined polygon to add to the map.
         MapPolygon newPolygon = null;
         MapPolygon newPolygon2 = null;
-        Pushpin newPushpin = null;
+
         // The map layer containing the polygon points defined by the user.
         MapLayer polygonPointLayer = new MapLayer();
 
@@ -36,8 +37,6 @@ namespace RotRoof
         {
 
             //ConsoleManager.Show();
-            //ConsoleManager.Show();
-
             InitializeComponent();
             
             
@@ -98,14 +97,14 @@ namespace RotRoof
 
             newPolygon2.Locations = new LocationCollection()
             {
-                new Location(longitude + 0.004, latitude - 0.002),
-                new Location(longitude + 0.004, latitude + 0.002),
-                new Location(longitude + 0.002, latitude + 0.005),
-                new Location(longitude, latitude + 0.005),
-                new Location(longitude - 0.002, latitude + 0.002),
-                new Location(longitude - 0.002, latitude - 0.002),
-                new Location(longitude, latitude - 0.005),
-                new Location(longitude + 0.002, latitude - 0.005)
+                new Microsoft.Maps.MapControl.WPF.Location(longitude + 0.004, latitude - 0.002),
+                new Microsoft.Maps.MapControl.WPF.Location(longitude + 0.004, latitude + 0.002),
+                new Microsoft.Maps.MapControl.WPF.Location(longitude + 0.002, latitude + 0.005),
+                new Microsoft.Maps.MapControl.WPF.Location(longitude, latitude + 0.005),
+                new Microsoft.Maps.MapControl.WPF.Location(longitude - 0.002, latitude + 0.002),
+                new Microsoft.Maps.MapControl.WPF.Location(longitude - 0.002, latitude - 0.002),
+                new Microsoft.Maps.MapControl.WPF.Location(longitude, latitude - 0.005),
+                new Microsoft.Maps.MapControl.WPF.Location(longitude + 0.002, latitude - 0.005)
             };
             MapWithPolygon.Children.Add(newPolygon2);
 
@@ -116,7 +115,7 @@ namespace RotRoof
             
             // The pushpin to add to the map.
             Pushpin pin = new Pushpin();
-            pin.Location = new Location(longitude, latitude);
+            pin.Location = new Microsoft.Maps.MapControl.WPF.Location(longitude, latitude);
             pin.Template = template;
             pin.PositionOrigin = PositionOrigin.BottomLeft;
 
