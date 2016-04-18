@@ -5,22 +5,33 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RotRoof"
         mc:Ignorable="d"
-        xmlns:m="clr-namespace:Microsoft.Maps.MapControl.WPF;assembly=Microsoft.Maps.MapControl.WPF">
-    
-    <Grid>
+        xmlns:m="clr-namespace:Microsoft.Maps.MapControl.WPF;assembly=Microsoft.Maps.MapControl.WPF" Height="527.882" Width="632.369">
 
-        <m:Map x:Name="MapWithPolygon"  DockPanel.Dock="Top" MinHeight="525" CredentialsProvider="AtpRhAYzndch3AqUr1PzBZN3cmcnOremPqynI7oxAuwTya6SQ1582q7N0nBXSucT" Mode="Road" Center="51.911380, 4.483526" ZoomLevel="12" >
-            <Canvas Width="50" Height="80" 
-              m:MapLayer.Position="51.917271, 4.483689" 
-              m:MapLayer.PositionOrigin="BottomCenter" Opacity="0.7">
-                <Path Data="M 0,0 L 50,0 50,50 25,80 0,50 0,0" Fill="Green" Stroke="Wheat" StrokeThickness="2" />
-                <TextBlock FontSize="9" Foreground="White" Margin="5" TextAlignment="Center">
-                        Wolfshoek <LineBreak />
-                              <LineBreak />
-                        Veilig <LineBreak />
-                </TextBlock>
-            </Canvas>
+    <Grid x:Name="LayoutRoot" Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="35" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <m:Map x:Name="MapWithPolygon" Grid.RowSpan="2"
+                  Center="51.917460, 4.485536" ZoomLevel="13"
+                  Mode="Road" 
+                  CredentialsProvider="AtpRhAYzndch3AqUr1PzBZN3cmcnOremPqynI7oxAuwTya6SQ1582q7N0nBXSucT" 
+                >
+            <TextBlock x:Name="txtDescription" Margin="5"><InlineUIContainer>
+                		<Button x:Name="button" Content="Clear Polygon" Width="95" Click="ClearPolygon"/>
+            		</InlineUIContainer><InlineUIContainer>
+                		<Button x:Name="button2" Content="Create Rand Polygon Func()" Width="159" Click="CreateRandPoly"/>
+                	</InlineUIContainer><InlineUIContainer>
+	<Button x:Name="button1" Content="Create Polygon Func()" Width="135" Click="CreatePoly"/>
+                	</InlineUIContainer></TextBlock>
+            <m:MapLayer x:Name="NewPolygonLayer">
+
+
+            </m:MapLayer>
         </m:Map>
+
+
     </Grid>
 </UserControl>
 
