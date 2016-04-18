@@ -40,6 +40,8 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -58,6 +60,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Service References\GeocodeService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Page Include="ChartView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -111,9 +118,47 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
+    <None Include="Service References\GeocodeService\GeocodeService.wsdl" />
+    <None Include="Service References\GeocodeService\GeocodeService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\GeocodeService\GeocodeService1.wsdl" />
+    <None Include="Service References\GeocodeService\GeocodeService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\GeocodeService\GeocodeService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\GeocodeService\GeocodeService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\GeocodeService\GeocodeService4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\GeocodeService\RotRoof.GeocodeService.GeocodeResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\GeocodeService\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\GeocodeService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\GeocodeService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\GeocodeService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
