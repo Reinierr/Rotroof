@@ -26,7 +26,7 @@ namespace RotRoof
 
         LocationConverter locConverter = new LocationConverter();
 
-        private void MapWithPushpins_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        private void MapWithPushpins(double x, double y)
         {
             // Disables the default mouse double-click action.
             e.Handled = true;
