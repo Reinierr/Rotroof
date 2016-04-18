@@ -10,8 +10,17 @@
     <Grid>
 
         <m:Map x:Name="myMap"  DockPanel.Dock="Top" MinHeight="525" CredentialsProvider="AtpRhAYzndch3AqUr1PzBZN3cmcnOremPqynI7oxAuwTya6SQ1582q7N0nBXSucT" Mode="Road" Center="51.911380, 4.483526" ZoomLevel="12" >
-
-
+            <Canvas Width="50" Height="80" 
+              m:MapLayer.Position="51.917271, 4.483689" 
+              m:MapLayer.PositionOrigin="BottomCenter" Opacity="0.7">
+                <Path Data="M 0,0 L 50,0 50,50 25,80 0,50 0,0" Fill="Green" Stroke="Wheat" StrokeThickness="2" />
+                <TextBlock FontSize="9" Foreground="White" Margin="5" TextAlignment="Center">
+                        Wolfshoek <LineBreak />
+                              <LineBreak />
+                        Veilig <LineBreak />
+                </TextBlock>
+            </Canvas>
         </m:Map>
     </Grid>
 </UserControl>
+
