@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RotRoof"
         mc:Ignorable="d">
-  <Grid Height="700" Width="750" >
-    <Canvas HorizontalAlignment="Left" Height="278" Margin="79,95,0,0" VerticalAlignment="Top" Width="700" Name="myCanvas" />
-    <Canvas Height="300" Width="300" Margin="916,73,56,316" Name="myPyCanvas" />
-  </Grid>
+    <Grid Height="700" Width="750" >
+        <Canvas HorizontalAlignment="Left" Height="513" Margin="33,135,0,0" VerticalAlignment="Top" Width="650" Name="myCanvas" />
+        <Canvas Margin="33,47,67,597" Name="myTitle"/>
+    </Grid>
 </UserControl>

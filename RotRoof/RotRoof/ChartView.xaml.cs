@@ -28,7 +28,7 @@ namespace RotRoof
             List<string> properties = new List<string>();
             properties.Add("MaandNaam");
             properties.Add("TotalMaand");
-            var information = test.Select("SELECT MONTH(datetime) AS MaandNaam, Count(*) AS TotalMaand FROM robbery WHERE datetime IS NOT NULL and YEAR(datetime) = '2011'  group by MONTH(datetime)");
+            var information = test.Select("SELECT date_format(datetime, '%b') AS MaandNaam, Count(*) AS TotalMaand FROM robbery WHERE datetime IS NOT NULL and YEAR(datetime) = '2012'  group by MONTH(datetime)");
 
             this.createGraph(information);
         }
@@ -37,9 +37,10 @@ namespace RotRoof
       //column
       Rectangle rect = new Rectangle();
       Brush paint = new SolidColorBrush(color);
+      double exp = canvas.Height / max;
       rect.Fill = paint;
       rect.Width = ((canvas.Width / (col + 1)) - 2);
-      rect.Height = height;
+      rect.Height = height * exp;
       Canvas.SetLeft(rect, (i + 1) * (rect.Width + 2));
       Canvas.SetBottom(rect, 20);
 
@@ -54,11 +55,11 @@ namespace RotRoof
       TextBlock txt2 = new TextBlock();
       txt2.Text = Convert.ToString(height);
       Canvas.SetLeft(txt2, 0);
-      Canvas.SetBottom(txt2, (height + 20));
+      Canvas.SetBottom(txt2, ((height + 20)*exp));
 
       myCanvas.Children.Add(rect);
       myCanvas.Children.Add(txt);
-      if (rect.Height == max || rect.Height == min)
+      if (rect.Height == max * exp || rect.Height == min * exp)
       {
         myCanvas.Children.Add(txt2);
       }
@@ -70,22 +71,28 @@ namespace RotRoof
       int min = 999999;
       int max = 0;
       // lengthe loop is array
-      /*foreach (KeyValuePair<string, string> entry in information)
-      {
-        if (sr > max)
-        {
-          max = sr.Total;
-        }
-        if (sr.Total < min)
-        {
-          min = sr.Total;
-        }
-      }*/
+      TextBlock Title = new TextBlock();
+      Title.FontFamily = new FontFamily("Century Gothic");
+      Title.FontSize = 15;
+      Title.Text = "Criminaliteit per maand in het jaar 2012";
+      myTitle.Children.Add(Title);
+
+       foreach (List<string> entry in information)
+       {
+         if (Convert.ToInt32(entry[1]) > max)
+         {
+           max = Convert.ToInt32(entry[1]);
+         }
+         if (Convert.ToInt32(entry[1]) < min)
+         {
+           min = Convert.ToInt32(entry[1]);
+         }
+       }
 
       foreach (List<string> entry in information)
       {
         Color color = i % 2 == 0 ? (Color)ColorConverter.ConvertFromString("#AEAEAE") : (Color)ColorConverter.ConvertFromString("#EAEAEA");
-        _canvasPlaceSingleColor(myCanvas, color, Convert.ToInt32(entry[0]), i, information.Count, entry[1], max, min);
+        _canvasPlaceSingleColor(myCanvas, color, Convert.ToInt32(entry[1]), i, information.Count, entry[0], max, min);
         i++;
       }
       
