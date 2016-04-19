@@ -7,11 +7,7 @@
         mc:Ignorable="d"
         xmlns:m="clr-namespace:Microsoft.Maps.MapControl.WPF;assembly=Microsoft.Maps.MapControl.WPF" Height="527.882" Width="632.369">
 
-    <Grid x:Name="LayoutRoot" Background="White">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="35" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
+    
 
         <m:Map x:Name="MapWithPolygon" Grid.RowSpan="2"
                   Center="51.917460, 4.485536" ZoomLevel="13"
@@ -21,8 +17,10 @@
             <TextBlock x:Name="txtDescription" Margin="5"><InlineUIContainer>
                 		<Button x:Name="button" Content="Clear Polygon" Width="95" Click="ClearPolygon"/>
             		</InlineUIContainer><InlineUIContainer>
-                		<Button x:Name="button2" Content="Create Rand Polygon Func()" Width="159" Click="CreateRandPoly"/>
+                		<Button x:Name="button2" Content="GeocodeAddress" Width="159" Click="GeocodeAddress"/>
                 	</InlineUIContainer><InlineUIContainer>
+            		<Label x:Name="labelResults" Content="Label" Height="54" Width="226"/>
+            	</InlineUIContainer><InlineUIContainer>
 	<Button x:Name="button1" Content="Create Polygon Func()" Width="135" Click="CreatePoly"/>
                 	</InlineUIContainer></TextBlock>
             <m:MapLayer x:Name="NewPolygonLayer">
@@ -32,6 +30,5 @@
         </m:Map>
 
 
-    </Grid>
 </UserControl>
 

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="d9bcb0c4-bc12-4528-adea-606b3c0b572d" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="0de4ac11-a25d-4b2e-9770-fd60d07f170b" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -22,13 +22,13 @@
     <MetadataSource Address="http://dev.virtualearth.net/webservices/v1/geocodeservice/geocodeservice.svc?wsdl" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="GeocodeService2.xsd" MetadataType="Schema" ID="52aa19d4-0fc5-4b41-bbae-2f44b8c0125d" SourceId="1" SourceUrl="http://dev.virtualearth.net/webservices/v1/metadata/geocodeservice/GeocodeService2.xsd" />
-    <MetadataFile FileName="GeocodeService1.wsdl" MetadataType="Wsdl" ID="50579d7e-30ab-4b16-91ea-d960dea018c0" SourceId="1" SourceUrl="http://dev.virtualearth.net/webservices/v1/metadata/geocodeservice/GeocodeService1.wsdl" />
-    <MetadataFile FileName="GeocodeService4.xsd" MetadataType="Schema" ID="43eb6b0b-4748-4ff6-a24d-aee63ce4ad7a" SourceId="1" SourceUrl="http://dev.virtualearth.net/webservices/v1/metadata/geocodeservice/GeocodeService4.xsd" />
-    <MetadataFile FileName="GeocodeService.wsdl" MetadataType="Wsdl" ID="c5968124-48d3-4340-aa70-2d4c66ad67ce" SourceId="1" SourceUrl="http://dev.virtualearth.net/webservices/v1/metadata/geocodeservice/geocodeservice.wsdl" />
-    <MetadataFile FileName="GeocodeService1.xsd" MetadataType="Schema" ID="3fcbf2f4-3fce-4ab3-b869-6a976e0cc328" SourceId="1" SourceUrl="http://dev.virtualearth.net/webservices/v1/metadata/geocodeservice/GeocodeService1.xsd" />
-    <MetadataFile FileName="GeocodeService3.xsd" MetadataType="Schema" ID="6abc567b-fe49-41f4-8f0c-a2575ae7dbc1" SourceId="1" SourceUrl="http://dev.virtualearth.net/webservices/v1/metadata/geocodeservice/GeocodeService3.xsd" />
-    <MetadataFile FileName="GeocodeService.xsd" MetadataType="Schema" ID="f4f88b7c-26d8-4034-a0d8-f9498496756b" SourceId="1" SourceUrl="http://dev.virtualearth.net/webservices/v1/metadata/geocodeservice/GeocodeService.xsd" />
+    <MetadataFile FileName="GeocodeService2.xsd" MetadataType="Schema" ID="b5f92d97-754b-4759-a484-ab6127877a60" SourceId="1" SourceUrl="http://dev.virtualearth.net/webservices/v1/metadata/geocodeservice/GeocodeService2.xsd" />
+    <MetadataFile FileName="GeocodeService1.wsdl" MetadataType="Wsdl" ID="bd867aea-d532-4c82-b2ca-d3dc1956db68" SourceId="1" SourceUrl="http://dev.virtualearth.net/webservices/v1/metadata/geocodeservice/GeocodeService1.wsdl" />
+    <MetadataFile FileName="GeocodeService4.xsd" MetadataType="Schema" ID="2f8114a1-54ab-4529-87fa-611c8dc923d7" SourceId="1" SourceUrl="http://dev.virtualearth.net/webservices/v1/metadata/geocodeservice/GeocodeService4.xsd" />
+    <MetadataFile FileName="GeocodeService.wsdl" MetadataType="Wsdl" ID="2377f2bb-08eb-4cb6-9f3d-34debf6ad2e2" SourceId="1" SourceUrl="http://dev.virtualearth.net/webservices/v1/metadata/geocodeservice/geocodeservice.wsdl" />
+    <MetadataFile FileName="GeocodeService1.xsd" MetadataType="Schema" ID="db627b94-93e1-4528-b27e-df22c5a1b324" SourceId="1" SourceUrl="http://dev.virtualearth.net/webservices/v1/metadata/geocodeservice/GeocodeService1.xsd" />
+    <MetadataFile FileName="GeocodeService3.xsd" MetadataType="Schema" ID="4e8c80b4-7e5b-4f2b-80bd-895d4f352622" SourceId="1" SourceUrl="http://dev.virtualearth.net/webservices/v1/metadata/geocodeservice/GeocodeService3.xsd" />
+    <MetadataFile FileName="GeocodeService.xsd" MetadataType="Schema" ID="bad280d2-a0c6-4ee2-8d42-ccd9304d9196" SourceId="1" SourceUrl="http://dev.virtualearth.net/webservices/v1/metadata/geocodeservice/GeocodeService.xsd" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
