@@ -1,6 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,9 +25,9 @@ namespace RotRoof
     private void Initialize()
     {
       server = "localhost";
-      database = "md325812db355195";
+      database = "project_3";
       uid = "root";
-      password = "admin";
+      password = "";
       string connectionString;
       connectionString = "SERVER=" + server + ";" + "DATABASE=" + database + ";" + "UID=" + uid + ";" + "PASSWORD=" + password + ";";
 
@@ -68,12 +69,10 @@ namespace RotRoof
       }
 
     }
-    public List<Dictionary<string, string>> Select(string query, List<string> properties)
-    {
-      //Create a list to store the results
-      List<Dictionary<string, string>> results = new List<System.Collections.Generic.Dictionary<string, string>>();
-      Dictionary<string, string> result = null;
 
+    public List<List<string>> Select(string query)
+    {
+      List<List<string>> results = new List<List<string>>();
       //Open connection
       if (this.OpenConnection() == true)
       {
@@ -81,22 +80,16 @@ namespace RotRoof
         MySqlCommand cmd = new MySqlCommand(query, connection);
         //Create a data reader and Execute the command
         MySqlDataReader dataReader = cmd.ExecuteReader();
-        int cnt = dataReader.FieldCount;
-        //Read the data and store them in the list
+
         while (dataReader.Read())
         {
-          int i = 0;
-          foreach (string p in properties) {
-            if (i % properties.Count == 0)
+            List<string> result = new List<string>();
+            var rowCount = dataReader.FieldCount;
+            for (int i = 0; i < rowCount; i++)
             {
-              if (result != null) {
-                results.Add(result);
-              }
-              result = new Dictionary<string, string>();
+               result.Add(Convert.ToString(dataReader[i])); 
             }
-            Debug.WriteLine(p);
-            result.Add(p ,Convert.ToString(dataReader[p]));
-          }
+            results.Add(result);
         }
 
         //close Data Reader
@@ -104,14 +97,10 @@ namespace RotRoof
 
         //close Connection
         this.CloseConnection();
-
-        //return list to be displayed
-        return results;
       }
-      else
-      {
         return results;
-      }
     }
+
   }
+
 }

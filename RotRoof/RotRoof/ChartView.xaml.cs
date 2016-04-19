@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,7 +28,8 @@ namespace RotRoof
             List<string> properties = new List<string>();
             properties.Add("MaandNaam");
             properties.Add("TotalMaand");
-            var information = test.Select("SELECT MONTH(datetime) AS MaandNaam, Count(*) AS TotalMaand FROM robbery WHERE datetime IS NOT NULL and YEAR(datetime) = '2011'  group by MONTH(datetime)", properties);
+            var information = test.Select("SELECT MONTH(datetime) AS MaandNaam, Count(*) AS TotalMaand FROM robbery WHERE datetime IS NOT NULL and YEAR(datetime) = '2011'  group by MONTH(datetime)");
+
             this.createGraph(information);
         }
     private void _canvasPlaceSingleColor(Canvas canvas, Color color, int height, int i, int col, string colName, int max, int min)
@@ -62,7 +64,7 @@ namespace RotRoof
       }
     }
 
-    public void createGraph(List<Dictionary<string, string>> information)
+    public void createGraph(List<List<string>> information)
     {
       int i = 0;
       int min = 999999;
@@ -80,10 +82,10 @@ namespace RotRoof
         }
       }*/
 
-      foreach (Dictionary<string, string> entry in information)
+      foreach (List<string> entry in information)
       {
         Color color = i % 2 == 0 ? (Color)ColorConverter.ConvertFromString("#AEAEAE") : (Color)ColorConverter.ConvertFromString("#EAEAEA");
-        _canvasPlaceSingleColor(myCanvas, color, Convert.ToInt32(entry["TotalMaand"]), i, information.Count, entry["MaandNaam"], max, min);
+        _canvasPlaceSingleColor(myCanvas, color, Convert.ToInt32(entry[0]), i, information.Count, entry[1], max, min);
         i++;
       }
       
