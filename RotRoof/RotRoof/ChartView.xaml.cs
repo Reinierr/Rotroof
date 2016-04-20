@@ -25,9 +25,6 @@ namespace RotRoof
         {
             InitializeComponent();
             DBConnection test = new DBConnection();
-            List<string> properties = new List<string>();
-            properties.Add("MaandNaam");
-            properties.Add("TotalMaand");
             var information = test.Select("SELECT date_format(datetime, '%b') AS MaandNaam, Count(*) AS TotalMaand FROM robbery WHERE datetime IS NOT NULL and YEAR(datetime) = '2012'  group by MONTH(datetime)");
 
             this.createGraph(information);
