@@ -1,4 +1,4 @@
-﻿using Microsoft.Maps.MapControl.WPF;
+﻿
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -16,6 +16,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Microsoft.Maps.MapControl.WPF;
 using RotRoof.GeocodeService;
 
 
@@ -27,6 +28,7 @@ namespace RotRoof
     public partial class MapView : UserControl
     {
         // The user defined polygon to add to the map.
+        MapPolygon newPolygon = null;
         MapPolygon newPolygon2 = null;
 
         // The map layer containing the polygon points defined by the user.
@@ -34,62 +36,185 @@ namespace RotRoof
 
         public MapView()
         {
+
             //ConsoleManager.Show();
             InitializeComponent();
+            
+            
             //Set focus to map
             MapWithPolygon.Focus();
+            
+            
+            
+
+            /*newPolygon.Locations = new LocationCollection()
+            {
+                //51.917460, 4.485536
+                //51.9174, 4.4855 center
+                /*
+                Y  , X
+                78 , 55
+                76 , 57
+                74 , 59
+                72 , 57
+                70 , 55
+                72 , 53
+                74 , 51
+                76 , 53
+                78 , 55
+
+                
+                
+                
+                
+                //Y,X
+                //stappen van 4
+                //51.9174, 4.4855 center
+                new Location(51.9178, 4.4853),
+                new Location(51.9178, 4.4857),
+                new Location(51.9176, 4.4860),
+                new Location(51.9174, 4.4860),
+                new Location(51.9172, 4.4857),
+                new Location(51.9172, 4.4853),
+                new Location(51.9174, 4.4850),
+                new Location(51.9176, 4.4850)
+                
+            };
+            MapWithPolygon.Children.Add(newPolygon);*/
+
+        }
+      
+
+        private String GeocodeAddress(string address)
+        {
+            string results = "";
+            string key = "AtpRhAYzndch3AqUr1PzBZN3cmcnOremPqynI7oxAuwTya6SQ1582q7N0nBXSucT";
+            GeocodeRequest geocodeRequest = new GeocodeRequest();
+            // Set the credentials using a valid Bing Maps key
+            geocodeRequest.Credentials = new Microsoft.Maps.MapControl.WPF.Credentials();
+            geocodeRequest.Credentials.ApplicationId = key;
+
+            // Set the full address query
+            geocodeRequest.Query = address;
+
+            // Set the options to only return high confidence results 
+            ConfidenceFilter[] filters = new ConfidenceFilter[1];
+            filters[0] = new ConfidenceFilter();
+            filters[0].MinimumConfidence = GeocodeService.Confidence.High;
+
+            // Add the filters to the options
+            GeocodeOptions geocodeOptions = new GeocodeOptions();
+            geocodeOptions.Filters = filters;
+            geocodeRequest.Options = geocodeOptions;
+
+            // Make the geocode request
+            GeocodeServiceClient geocodeService = new GeocodeServiceClient();
+            GeocodeResponse geocodeResponse = geocodeService.Geocode(geocodeRequest);
+
+            if (geocodeResponse.Results.Length > 0)
+            {
+                results = String.Format("Latitude: {0}\nLongitude: {1}",
+                  geocodeResponse.Results[0].Locations[0].Latitude,
+                  geocodeResponse.Results[0].Locations[0].Longitude);
+
+                //CALL CREATEROUNDPOLY FUNCTION 
+                CreateRoundPoly(geocodeResponse.Results[0].Locations[0].Latitude,
+                  geocodeResponse.Results[0].Locations[0].Longitude);
+            }
+            else
+                results = "No Results Found";
+
+            return results;
         }
 
-        public void CreateRoundPoly(double longitude, double latitude )
+        public void CreateRoundPoly(double latitude, double longitude)
         {
             newPolygon2 = new MapPolygon();
+
             // Defines the polygon fill details
             newPolygon2.Locations = new LocationCollection();
             newPolygon2.Fill = new SolidColorBrush(Colors.Green);
             newPolygon2.Stroke = new SolidColorBrush(Colors.DarkGreen);
             newPolygon2.StrokeThickness = 3;
             newPolygon2.Opacity = 0.4;
+
             //Set focus back to the map so that +/- work for zoom in/out
             MapWithPolygon.Focus();
-
+            //LATITUDE == HOOGTE & LONGITUDE == BREEDTE
             newPolygon2.Locations = new LocationCollection()
             {
-                new Microsoft.Maps.MapControl.WPF.Location(longitude + 0.002, latitude - 0.001),
-                new Microsoft.Maps.MapControl.WPF.Location(longitude + 0.002, latitude + 0.001),
-                new Microsoft.Maps.MapControl.WPF.Location(longitude + 0.001, latitude + 0.0025),
-                new Microsoft.Maps.MapControl.WPF.Location(longitude, latitude + 0.0025),
-                new Microsoft.Maps.MapControl.WPF.Location(longitude - 0.001, latitude + 0.001),
-                new Microsoft.Maps.MapControl.WPF.Location(longitude - 0.001, latitude - 0.001),
-                new Microsoft.Maps.MapControl.WPF.Location(longitude, latitude - 0.0025),
-                new Microsoft.Maps.MapControl.WPF.Location(longitude + 0.001, latitude - 0.0025)
+                new Microsoft.Maps.MapControl.WPF.Location(latitude - 0.001, longitude + 0.003),
+                new Microsoft.Maps.MapControl.WPF.Location(latitude + 0.001, longitude + 0.003),
+                new Microsoft.Maps.MapControl.WPF.Location(latitude + 0.002, longitude + 0.001),
+                new Microsoft.Maps.MapControl.WPF.Location(latitude + 0.002, longitude-0.001),
+                new Microsoft.Maps.MapControl.WPF.Location(latitude + 0.001, longitude - 0.003),
+                new Microsoft.Maps.MapControl.WPF.Location(latitude - 0.001, longitude - 0.003),
+                new Microsoft.Maps.MapControl.WPF.Location(latitude - 0.002, longitude - 0.001),
+                new Microsoft.Maps.MapControl.WPF.Location(latitude - 0.002, longitude + 0.001)
             };
             MapWithPolygon.Children.Add(newPolygon2);
 
+
             ControlTemplate template = (ControlTemplate)this.FindResource("CutomPushpinTemplate");
 
+            
+            
             // The pushpin to add to the map.
             Pushpin pin = new Pushpin();
-            pin.Location = new Microsoft.Maps.MapControl.WPF.Location(longitude, latitude);
+            pin.Location = new Microsoft.Maps.MapControl.WPF.Location(latitude, longitude);
             pin.Template = template;
             pin.PositionOrigin = PositionOrigin.BottomLeft;
-            pin.Content = "Veilig";
+
+            //TEXT IN PUSHPIN
+            pin.Content = "Test";
+
             pin.MouseDown += new MouseButtonEventHandler(pin_MouseDown);
 
             // Adds the pushpin to the map.
             MapWithPolygon.Children.Add(pin);
+
+
         }
         private void pin_MouseDown(object sender, MouseButtonEventArgs e)
         {
             Console.WriteLine("Pinpoint Clicked Aids");
         }
-
+        
         private void CreatePoly(object sender, RoutedEventArgs e)
         {
-            double Y = 51.91714;
-            double X = 4.49037;
+            double X = 51.91714;
+            double Y = 4.49037;
 
-            CreateRoundPoly(Y, X);
+            CreateRoundPoly(X, Y);
         }
+
+        private void GeocodeAddress(object sender, RoutedEventArgs e)
+        {
+            GeocodeAddress("Middeland");
+            /*string test = "0.00";
+            Random rnd = new Random();
+            int randNumber = rnd.Next(1, 10);
+
+            double add = Convert.ToDouble(test + randNumber);
+            Console.WriteLine(add);
+            
+
+            double Y = 51.91714 + add;
+            double X = 4.49037 + add;
+
+            CreateRoundPoly(Y, X);*/
+        }
+
+        private void ClearPolygon(object sender, RoutedEventArgs e)
+        {
+            labelResults.Content = GeocodeAddress("MIDDELAND");
+            //MapWithPolygon.Children.Clear();
+            /*MapWithPolygon.Children.Remove(newPolygon);
+            MapWithPolygon.Children.Remove(newPolygon2);*/
+        }
+
+
+ 
 
 
         [SuppressUnmanagedCodeSecurity]

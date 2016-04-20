@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,78 +24,78 @@ namespace RotRoof
         public ChartView()
         {
             InitializeComponent();
-            this.createGrid10x10();
+            DBConnection test = new DBConnection();
+            List<string> properties = new List<string>();
+            properties.Add("MaandNaam");
+            properties.Add("TotalMaand");
+            var information = test.Select("SELECT date_format(datetime, '%b') AS MaandNaam, Count(*) AS TotalMaand FROM robbery WHERE datetime IS NOT NULL and YEAR(datetime) = '2012'  group by MONTH(datetime)");
 
-    }
-    private void _placeSingleColorColumn(Grid grid, Color color, int height, int colNum, int maxHeight)
+            this.createGraph(information);
+        }
+    private void _canvasPlaceSingleColor(Canvas canvas, Color color, int height, int i, int col, string colName, int max, int min)
     {
-      Brush brush = new SolidColorBrush(color);
-
+      //column
       Rectangle rect = new Rectangle();
-      rect.Fill = brush;
-      rect.Width = 50;
-      Grid.SetColumn(rect, colNum);
-      Grid.SetRow(rect, maxHeight - height);
-      Grid.SetRowSpan(rect, height);
+      Brush paint = new SolidColorBrush(color);
+      double exp = canvas.Height / max;
+      rect.Fill = paint;
+      rect.Width = ((canvas.Width / (col + 1)) - 2);
+      rect.Height = height * exp;
+      Canvas.SetLeft(rect, (i + 1) * (rect.Width + 2));
+      Canvas.SetBottom(rect, 20);
 
-      grid.Children.Add(rect);
-    }
+      // columnName
+      TextBlock txt = new TextBlock();
+      txt.Text = colName;
+      txt.HorizontalAlignment = HorizontalAlignment.Center;
+      Canvas.SetLeft(txt, (i + 1) * (rect.Width + 2));
+      Canvas.SetBottom(txt, 0);
 
-    private void _createLabelsvert(Grid grid, string[] labels)
-    {
-      RowDefinition rowDefnLabels = new RowDefinition();
-      grid.RowDefinitions.Add(rowDefnLabels);
+      // columnInt
+      TextBlock txt2 = new TextBlock();
+      txt2.Text = Convert.ToString(height);
+      Canvas.SetLeft(txt2, 0);
+      Canvas.SetBottom(txt2, ((height + 20)*exp));
 
-      for (int i = 0; i < labels.Length; i++)
+      myCanvas.Children.Add(rect);
+      myCanvas.Children.Add(txt);
+      if (rect.Height == max * exp || rect.Height == min * exp)
       {
-        TextBlock block = new TextBlock();
-        block.Text = labels[i];
-        block.HorizontalAlignment = System.Windows.HorizontalAlignment.Right;
-        Grid.SetRow(block, i);
-        Grid.SetColumn(block, grid.ColumnDefinitions.Count);
-        grid.Children.Add(block);
+        myCanvas.Children.Add(txt2);
       }
     }
-    private void _createLabelshor(Grid grid, string[] labels)
-    {
-      RowDefinition rowDefnLabels = new RowDefinition();
-      grid.RowDefinitions.Add(rowDefnLabels);
 
-      for (int i = 0; i < labels.Length; i++)
-      {
-        TextBlock block = new TextBlock();
-        block.Text = labels[i];
-        block.HorizontalAlignment = System.Windows.HorizontalAlignment.Center;
-        Grid.SetColumn(block, i);
-        Grid.SetRow(block, grid.RowDefinitions.Count);
-        grid.Children.Add(block);
-      }
-    }
-    public void createGrid10x10()
+    public void createGraph(List<List<string>> information)
     {
-      Random random = new Random();
-
+      int i = 0;
+      int min = 999999;
+      int max = 0;
       // lengthe loop is array
-      for (int i = 0; i < 10; i++)
+      TextBlock Title = new TextBlock();
+      Title.FontFamily = new FontFamily("Century Gothic");
+      Title.FontSize = 15;
+      Title.Text = "Criminaliteit per maand in het jaar 2012";
+      myTitle.Children.Add(Title);
+
+       foreach (List<string> entry in information)
+       {
+         if (Convert.ToInt32(entry[1]) > max)
+         {
+           max = Convert.ToInt32(entry[1]);
+         }
+         if (Convert.ToInt32(entry[1]) < min)
+         {
+           min = Convert.ToInt32(entry[1]);
+         }
+       }
+
+      foreach (List<string> entry in information)
       {
-        string[] aLabels = "10,9,8,7,6,5,4,3,2,1".Split(',');
-        _createLabelsvert(this.myGridLeft, aLabels);
-
-        ColumnDefinition colDef = new ColumnDefinition();
-        ColumnDefinition colDef2 = new ColumnDefinition();
-        myGridMain.ColumnDefinitions.Add(colDef);
-        myGridBottom.ColumnDefinitions.Add(colDef2);
-
-        RowDefinition rowDef = new RowDefinition();
-        myGridMain.RowDefinitions.Add(rowDef);
-
-
         Color color = i % 2 == 0 ? (Color)ColorConverter.ConvertFromString("#AEAEAE") : (Color)ColorConverter.ConvertFromString("#EAEAEA");
-
-        _placeSingleColorColumn(this.myGridMain, color, random.Next(1, 11), i, 10);
+        _canvasPlaceSingleColor(myCanvas, color, Convert.ToInt32(entry[1]), i, information.Count, entry[0], max, min);
+        i++;
       }
-      string[] bLabels = "Jan, Feb, Mrt, Apr, Mei, Jun, Jul, Aug, Sep, Okt, Nov, Dec".Split(',');
-      _createLabelshor(this.myGridBottom, bLabels);
+      
     }
   }
 
