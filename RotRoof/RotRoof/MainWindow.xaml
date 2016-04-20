@@ -165,9 +165,10 @@
                                 </Style>
                             </Button.Style>
                         </Button>
-                        <StackPanel Orientation="Horizontal" MinHeight="215" >
-                    </StackPanel>
-                    <Border Background="White" BorderBrush="#008651" BorderThickness="0,6,0,0"  >
+          <StackPanel Orientation="Horizontal" MinHeight="215" >
+            <Image VerticalAlignment="Bottom" Width="250" Source="content/hiphappening.png"></Image>
+          </StackPanel>
+          <Border Background="White" BorderBrush="#008651" BorderThickness="0,6,0,0"  >
                         <StackPanel Orientation="Horizontal" MinHeight="10" >
                             <Rectangle  Width="10"  Height="0"/>
                             <TextBlock Text="Legenda Map " Margin="5"/>
