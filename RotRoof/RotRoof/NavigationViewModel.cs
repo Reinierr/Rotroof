@@ -12,6 +12,7 @@ namespace RotRoof
     {
         public ICommand MapCommand { get; set; }
         public ICommand ChartCommand { get; set; }
+        public ICommand PieChartCommand { get; set; }
 
         private object selectedViewModel;
 
@@ -26,6 +27,7 @@ namespace RotRoof
         {
             MapCommand = new BaseCommand(OpenMap);
             ChartCommand = new BaseCommand(OpenChart);
+            PieChartCommand = new BaseCommand(OpenPieChart);
         }
 
         private void OpenMap(object obj)
@@ -35,6 +37,10 @@ namespace RotRoof
         private void OpenChart(object obj)
         {
             SelectedViewModel = new ChartViewModel();
+        }
+        private void OpenPieChart(object obj) 
+        {
+            SelectedViewModel = new PieChartViewModel();
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

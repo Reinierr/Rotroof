@@ -25,9 +25,9 @@ namespace RotRoof
     private void Initialize()
     {
       server = "localhost";
-      database = "project_3";
+      database = "md325812db355195";
       uid = "root";
-      password = "";
+      password = "admin";
       string connectionString;
       connectionString = "SERVER=" + server + ";" + "DATABASE=" + database + ";" + "UID=" + uid + ";" + "PASSWORD=" + password + ";";
 
