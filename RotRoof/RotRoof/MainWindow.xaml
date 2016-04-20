@@ -14,33 +14,7 @@
         <DataTemplate DataType="{x:Type local:ChartViewModel}">
             <local:ChartView/>
         </DataTemplate>
-        <ControlTemplate x:Key="CutomPushpinTemplate" TargetType="m:Pushpin">
-            <Grid x:Name="ContentGrid" HorizontalAlignment="Center" VerticalAlignment="Center">
-                <StackPanel>
-                    <Grid Margin="0" Width="33" Height="33">
-                        <Rectangle HorizontalAlignment="Left" Margin="-0.208,13.238,0,-0.146" Width="10.555" Fill="#FF005167" RenderTransformOrigin="0.5,0.5">
-                            <Rectangle.RenderTransform>
-                                <TransformGroup>
-                                    <ScaleTransform/>
-                                    <SkewTransform AngleX="-23"/>
-                                    <RotateTransform Angle="-12.944"/>
-                                    <TranslateTransform/>
-                                </TransformGroup>
-                            </Rectangle.RenderTransform>
-                        </Rectangle>
-
-                        <Rectangle Fill="White" Stroke="#FF005167" RadiusX="5" RadiusY="5"/>
-
-                        <ContentPresenter HorizontalAlignment="Center"
-                                                                VerticalAlignment="Center"
-                                                                Content="{TemplateBinding Content}"
-                                                                ContentTemplate="{TemplateBinding ContentTemplate}"
-                                                                Margin="0" TextBlock.FontFamily="Segoe UI" TextBlock.FontWeight="Bold" TextBlock.Foreground="#FFB8D30B">
-                        </ContentPresenter>
-                    </Grid>
-                </StackPanel>
-            </Grid>
-        </ControlTemplate>
+        
     </Window.Resources>
     <Border Background="White" BorderBrush="#008651" BorderThickness="6">
         <DockPanel LastChildFill="True">
