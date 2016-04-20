@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:RotRoof"
         mc:Ignorable="d"
         xmlns:m="clr-namespace:Microsoft.Maps.MapControl.WPF;assembly=Microsoft.Maps.MapControl.WPF"
-        Title="RotRoof" Height="720" Width="1000">
+        Title="RotRoof" Height="720" Width="1000" ResizeMode="NoResize">
     <Window.Resources>
         <DataTemplate DataType="{x:Type local:MapViewModel}">
             <local:MapView/>
