@@ -29,6 +29,6 @@
       </DVC:Chart.Series>
 
     </DVC:Chart>
-    <Canvas Margin="33,47,67,597" Name="myTitle"/>
+        <Canvas Margin="100,10,67,597" Name="myTitle"/>
   </Grid>
 </UserControl>
