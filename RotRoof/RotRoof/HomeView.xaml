@@ -8,5 +8,6 @@
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
     <Image Source="content/skyline.jpg" VerticalAlignment="Bottom"></Image>
+    <Image Source="content/rotroof.png" HorizontalAlignment="Center"></Image>
   </Grid>
 </UserControl>
