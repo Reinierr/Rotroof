@@ -158,6 +158,24 @@
                             </Button.Style>
                         </Button>
                     </StackPanel>
+                    <StackPanel Orientation="Horizontal" MinHeight="395" >
+                    </StackPanel>
+                    <Border Background="White" BorderBrush="#008651" BorderThickness="0,6,0,0"  >
+                        <StackPanel Orientation="Horizontal" MinHeight="10" >
+                            <Rectangle  Width="10"  Height="0"/>
+                            <TextBlock Text="Legenda Map " Margin="5"/>
+                        </StackPanel>
+                        </Border>
+                        <StackPanel Orientation="Horizontal" MinHeight="10" >
+                        <Rectangle  Width="10"  Height="30"/>
+                        <Rectangle  Width="20"  Height="20" Fill="#008651" Opacity="0.7"/>
+                        <TextBlock Text="Veilig" Margin="5"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" MinHeight="10" >
+                        <Rectangle  Width="10"  Height="30"/>
+                        <Rectangle  Width="20"  Height="20" Fill="red" Opacity="0.7"/>
+                        <TextBlock Text="Onveilig" Margin="5"/>
+                    </StackPanel>
                 </StackPanel>
             </Border>
             <ContentControl x:Name="Pages" Content="{Binding SelectedViewModel}"/>
