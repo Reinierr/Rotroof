@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:RotRoof"
         mc:Ignorable="d">
     <Grid Height="700" Width="750" >
-        <Canvas HorizontalAlignment="Left" Height="513" Margin="33,135,0,0" VerticalAlignment="Top" Width="650" Name="myCanvas" />
-        <Canvas Margin="33,47,67,597" Name="myTitle"/>
+        <Canvas HorizontalAlignment="Left" Height="513" Margin="10,135,0,0" VerticalAlignment="Top" Width="673" Name="myCanvas" />
+        <Canvas Margin="217,47,83,597" Name="myTitle"/>
     </Grid>
 </UserControl>

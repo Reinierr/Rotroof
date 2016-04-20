@@ -17,6 +17,9 @@
         <DataTemplate DataType="{x:Type local:PieChartViewModel}">
           <local:PieChartView/>
         </DataTemplate>
+        <DataTemplate DataType="{x:Type local:ChartView2Model}">
+          <local:ChartView2/>
+        </DataTemplate>
     <ControlTemplate x:Key="CutomPushpinTemplate" TargetType="m:Pushpin">
             <Grid x:Name="ContentGrid" HorizontalAlignment="Center" VerticalAlignment="Center">
                 <StackPanel>
@@ -133,7 +136,7 @@
                                 </Style>
                             </Button.Style>
                         </Button>
-                        <Button Margin="5" Padding="30" MinWidth="130" MinHeight="80" Content="Chart" Command="{Binding ChartCommand}">
+                        <Button Margin="5" Padding="30" MinWidth="130" MinHeight="80" Content="Chart" Command="{Binding Chart2Command}">
                             <Button.Style>
                                 <Style TargetType="{x:Type Button}">
                                     <Setter Property="Background" Value="#008651" />
@@ -160,6 +163,24 @@
                                 </Style>
                             </Button.Style>
                         </Button>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" MinHeight="395" >
+                    </StackPanel>
+                    <Border Background="White" BorderBrush="#008651" BorderThickness="0,6,0,0"  >
+                        <StackPanel Orientation="Horizontal" MinHeight="10" >
+                            <Rectangle  Width="10"  Height="0"/>
+                            <TextBlock Text="Legenda Map " Margin="5"/>
+                        </StackPanel>
+                        </Border>
+                        <StackPanel Orientation="Horizontal" MinHeight="10" >
+                        <Rectangle  Width="10"  Height="30"/>
+                        <Rectangle  Width="20"  Height="20" Fill="#008651" Opacity="0.7"/>
+                        <TextBlock Text="Veilig" Margin="5"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" MinHeight="10" >
+                        <Rectangle  Width="10"  Height="30"/>
+                        <Rectangle  Width="20"  Height="20" Fill="red" Opacity="0.7"/>
+                        <TextBlock Text="Onveilig" Margin="5"/>
                     </StackPanel>
                 </StackPanel>
             </Border>

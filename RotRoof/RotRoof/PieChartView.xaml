@@ -15,7 +15,7 @@
     </Grid.Resources>
 
     <DVC:Chart Canvas.Top="0" Canvas.Left="0" Name="mcChart"
-             Width="600" Height="400"
+             Width="700" Height="600"
              Background="White"
              LegendTitle="Merken"
              Foreground="Black"

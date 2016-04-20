@@ -16,19 +16,19 @@ using System.Windows.Shapes;
 
 namespace RotRoof
 {
-    /// <summary>
-    /// Interaction logic for ChartView.xaml
-    /// </summary>
-    public partial class ChartView : UserControl
+  /// <summary>
+  /// Interaction logic for ChartView.xaml
+  /// </summary>
+  public partial class ChartView2 : UserControl
+  {
+    public ChartView2()
     {
-        public ChartView()
-        {
-            InitializeComponent();
-            DBConnection test = new DBConnection();
-            var information = test.Select("SELECT date_format(datetime, '%b') AS MaandNaam, Count(*) AS TotalMaand FROM robbery WHERE datetime IS NOT NULL and YEAR(datetime) = '2012'  group by MONTH(datetime)");
+      InitializeComponent();
+      DBConnection test = new DBConnection();
+      var information = test.Select("SELECT date_format(datetime, '%Y') AS MaandNaam, Count(*) AS Total FROM robbery WHERE datetime IS NOT NULL AND YEAR(datetime) = '2011' OR YEAR(datetime) = '2012' group by YEAR(datetime)");
 
-            this.createGraph(information);
-        }
+      this.createGraph(information);
+    }
     private void _canvasPlaceSingleColor(Canvas canvas, Color color, int height, int i, int col, string colName, int max, int min)
     {
       //column
@@ -52,7 +52,7 @@ namespace RotRoof
       TextBlock txt2 = new TextBlock();
       txt2.Text = Convert.ToString(height);
       Canvas.SetLeft(txt2, 0);
-      Canvas.SetBottom(txt2, ((height + 20)*exp));
+      Canvas.SetBottom(txt2, ((height + 20) * exp));
 
       myCanvas.Children.Add(rect);
       myCanvas.Children.Add(txt);
@@ -71,20 +71,20 @@ namespace RotRoof
       TextBlock Title = new TextBlock();
       Title.FontFamily = new FontFamily("Century Gothic");
       Title.FontSize = 15;
-      Title.Text = "Roven per maand in het jaar 2012";
+      Title.Text = "Roven door de jaren heen";
       myTitle.Children.Add(Title);
 
-       foreach (List<string> entry in information)
-       {
-         if (Convert.ToInt32(entry[1]) > max)
-         {
-           max = Convert.ToInt32(entry[1]);
-         }
-         if (Convert.ToInt32(entry[1]) < min)
-         {
-           min = Convert.ToInt32(entry[1]);
-         }
-       }
+      foreach (List<string> entry in information)
+      {
+        if (Convert.ToInt32(entry[1]) > max)
+        {
+          max = Convert.ToInt32(entry[1]);
+        }
+        if (Convert.ToInt32(entry[1]) < min)
+        {
+          min = Convert.ToInt32(entry[1]);
+        }
+      }
 
       foreach (List<string> entry in information)
       {
@@ -92,7 +92,7 @@ namespace RotRoof
         _canvasPlaceSingleColor(myCanvas, color, Convert.ToInt32(entry[1]), i, information.Count, entry[0], max, min);
         i++;
       }
-      
+
     }
   }
 
