@@ -8,6 +8,8 @@
         xmlns:m="clr-namespace:Microsoft.Maps.MapControl.WPF;assembly=Microsoft.Maps.MapControl.WPF"
         Title="RotRoof" Height="720" Width="1000" ResizeMode="NoResize">
     <Window.Resources>
+
+        <!-- Navigation Views -->
         <DataTemplate DataType="{x:Type local:HomeViewModel}">
           <local:HomeView/>
         </DataTemplate>
@@ -23,158 +25,147 @@
         <DataTemplate DataType="{x:Type local:ChartView2Model}">
           <local:ChartView2/>
         </DataTemplate>
-    <ControlTemplate x:Key="CutomPushpinTemplate" TargetType="m:Pushpin">
-            <Grid x:Name="ContentGrid" HorizontalAlignment="Center" VerticalAlignment="Center">
-                <StackPanel>
-                    <Grid Margin="0" Width="33" Height="33">
-                        <Rectangle HorizontalAlignment="Left" Margin="-0.208,13.238,0,-0.146" Width="10.555" Fill="#FF005167" RenderTransformOrigin="0.5,0.5">
-                            <Rectangle.RenderTransform>
-                                <TransformGroup>
-                                    <ScaleTransform/>
-                                    <SkewTransform AngleX="-23"/>
-                                    <RotateTransform Angle="-12.944"/>
-                                    <TranslateTransform/>
-                                </TransformGroup>
-                            </Rectangle.RenderTransform>
-                        </Rectangle>
-
-                        <Rectangle Fill="White" Stroke="#FF005167" RadiusX="5" RadiusY="5"/>
-
-                        <ContentPresenter HorizontalAlignment="Center"
-                                                                VerticalAlignment="Center"
-                                                                Content="{TemplateBinding Content}"
-                                                                ContentTemplate="{TemplateBinding ContentTemplate}"
-                                                                Margin="0" TextBlock.FontFamily="Segoe UI" TextBlock.FontWeight="Bold" TextBlock.Foreground="#000">
-                        </ContentPresenter>
-                    </Grid>
-                </StackPanel>
-            </Grid>
-        </ControlTemplate>
+        
+        
     </Window.Resources>
+
+    <!-- MainWindow -->
     <Border Background="White" BorderBrush="#008651" BorderThickness="6">
         <DockPanel LastChildFill="True">
             <Border Background="White" BorderBrush="#008651" BorderThickness="0,0,6,0"  >
-                <StackPanel DockPanel.Dock="Left" Background="White" MinWidth="250">
-                    
-                        <Button Margin="5" Padding="30" MinHeight="80" MinWidth="130" Content="Map" Command="{Binding MapCommand}">
-                            <Button.Style>
-                                <Style TargetType="{x:Type Button}">
-                                    <Setter Property="Background" Value="#008651" />
-                                    <Setter Property="Foreground" Value="White"/>
-                                    <Setter Property="BorderBrush" Value="DarkGreen"/>
-                                    <Setter Property="BorderThickness" Value="1"/>
-                                    <Setter Property="Template">
-                                        <Setter.Value>
-                                            <ControlTemplate TargetType="{x:Type Button}">
-                                                <Border Background="{TemplateBinding Background}" BorderBrush="#008651" BorderThickness="3" >
-                                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
-                                                </Border>
-                                            </ControlTemplate>
-                                        </Setter.Value>
-                                    </Setter>
-                                    <Style.Triggers>
-                                        <Trigger Property="IsMouseOver" Value="True">
-                                            <Setter Property="Background" Value="#00B56D"/>
-                                            <Setter Property="Foreground" Value="White"/>
-                                            <Setter Property="BorderBrush" Value="Red"/>
-                                            <Setter Property="BorderThickness" Value="3"/>
-                                        </Trigger>
-                                    </Style.Triggers>
-                                </Style>
-                            </Button.Style>
-                        </Button>
-                        <Button Margin="5" Padding="30" MinWidth="130" MinHeight="80" Content="Staafdiagram Maand" Command="{Binding ChartCommand}">
-                            <Button.Style>
-                                <Style TargetType="{x:Type Button}">
-                                    <Setter Property="Background" Value="#008651" />
-                                    <Setter Property="Foreground" Value="White"/>
-                                    <Setter Property="BorderBrush" Value="DarkGreen"/>
-                                    <Setter Property="BorderThickness" Value="1"/>
-                                    <Setter Property="Template">
-                                        <Setter.Value>
-                                            <ControlTemplate TargetType="{x:Type Button}">
-                                                <Border Background="{TemplateBinding Background}" BorderBrush="#008651" BorderThickness="3" >
-                                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
-                                                </Border>
-                                            </ControlTemplate>
-                                        </Setter.Value>
-                                    </Setter>
-                                    <Style.Triggers>
-                                        <Trigger Property="IsMouseOver" Value="True">
-                                            <Setter Property="Background" Value="#00B56D"/>
-                                            <Setter Property="Foreground" Value="White"/>
-                                            <Setter Property="BorderBrush" Value="Red"/>
-                                            <Setter Property="BorderThickness" Value="3"/>
-                                        </Trigger>
-                                    </Style.Triggers>
-                                </Style>
-                            </Button.Style>
-                        </Button>
 
-                        <Button Margin="5" Padding="30" MinWidth="130" MinHeight="80" Content="Cirkeldiagram" Command="{Binding PieChartCommand}">
-                            <Button.Style>
-                                <Style TargetType="{x:Type Button}">
-                                    <Setter Property="Background" Value="#008651" />
-                                    <Setter Property="Foreground" Value="White"/>
-                                    <Setter Property="BorderBrush" Value="DarkGreen"/>
-                                    <Setter Property="BorderThickness" Value="1"/>
-                                    <Setter Property="Template">
-                                        <Setter.Value>
-                                            <ControlTemplate TargetType="{x:Type Button}">
-                                                <Border Background="{TemplateBinding Background}" BorderBrush="#008651" BorderThickness="3" >
-                                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
-                                                </Border>
-                                            </ControlTemplate>
-                                        </Setter.Value>
-                                    </Setter>
-                                    <Style.Triggers>
-                                        <Trigger Property="IsMouseOver" Value="True">
-                                            <Setter Property="Background" Value="#00B56D"/>
-                                            <Setter Property="Foreground" Value="White"/>
-                                            <Setter Property="BorderBrush" Value="Red"/>
-                                            <Setter Property="BorderThickness" Value="3"/>
-                                        </Trigger>
-                                    </Style.Triggers>
-                                </Style>
-                            </Button.Style>
-                        </Button>
-                        <Button Margin="5" Padding="30" MinWidth="130" MinHeight="80" Content="Staafdiagram Jaar" Command="{Binding Chart2Command}">
-                            <Button.Style>
-                                <Style TargetType="{x:Type Button}">
-                                    <Setter Property="Background" Value="#008651" />
-                                    <Setter Property="Foreground" Value="White"/>
-                                    <Setter Property="BorderBrush" Value="DarkGreen"/>
-                                    <Setter Property="BorderThickness" Value="1"/>
-                                    <Setter Property="Template">
-                                        <Setter.Value>
-                                            <ControlTemplate TargetType="{x:Type Button}">
-                                                <Border Background="{TemplateBinding Background}" BorderBrush="#008651" BorderThickness="3" >
-                                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
-                                                </Border>
-                                            </ControlTemplate>
-                                        </Setter.Value>
-                                    </Setter>
-                                    <Style.Triggers>
-                                        <Trigger Property="IsMouseOver" Value="True">
-                                            <Setter Property="Background" Value="#00B56D"/>
-                                            <Setter Property="Foreground" Value="White"/>
-                                            <Setter Property="BorderBrush" Value="Red"/>
-                                            <Setter Property="BorderThickness" Value="3"/>
-                                        </Trigger>
-                                    </Style.Triggers>
-                                </Style>
-                            </Button.Style>
-                        </Button>
-          <StackPanel Orientation="Horizontal" MinHeight="215" >
-            <Image VerticalAlignment="Bottom" Width="250" Source="content/hiphappening.png"></Image>
-          </StackPanel>
-          <Border Background="White" BorderBrush="#008651" BorderThickness="0,6,0,0"  >
+                <!-- SideMenu -->
+                <StackPanel DockPanel.Dock="Left" Background="White" MinWidth="250">
+
+                    <!-- Button 1 (MAP) -->
+                    <Button Margin="5" Padding="30" MinHeight="80" MinWidth="130" Content="Map" Command="{Binding MapCommand}">
+                        <Button.Style>
+                            <Style TargetType="{x:Type Button}">
+                                <Setter Property="Background" Value="#008651" />
+                                <Setter Property="Foreground" Value="White"/>
+                                <Setter Property="BorderBrush" Value="DarkGreen"/>
+                                <Setter Property="BorderThickness" Value="1"/>
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="{x:Type Button}">
+                                            <Border Background="{TemplateBinding Background}" BorderBrush="#008651" BorderThickness="3" >
+                                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#00B56D"/>
+                                        <Setter Property="Foreground" Value="White"/>
+                                        <Setter Property="BorderBrush" Value="Red"/>
+                                        <Setter Property="BorderThickness" Value="3"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+                    
+                    <!-- Button 2 (CHART JAAR) -->
+                    <Button Margin="5" Padding="30" MinWidth="130" MinHeight="80" Content="Staafdiagram Maand" Command="{Binding ChartCommand}">
+                        <Button.Style>
+                            <Style TargetType="{x:Type Button}">
+                                <Setter Property="Background" Value="#008651" />
+                                <Setter Property="Foreground" Value="White"/>
+                                <Setter Property="BorderBrush" Value="DarkGreen"/>
+                                <Setter Property="BorderThickness" Value="1"/>
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="{x:Type Button}">
+                                            <Border Background="{TemplateBinding Background}" BorderBrush="#008651" BorderThickness="3" >
+                                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#00B56D"/>
+                                        <Setter Property="Foreground" Value="White"/>
+                                        <Setter Property="BorderBrush" Value="Red"/>
+                                        <Setter Property="BorderThickness" Value="3"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+                    
+                    <!-- Button 3 (PIECHART) -->
+                    <Button Margin="5" Padding="30" MinWidth="130" MinHeight="80" Content="Cirkeldiagram" Command="{Binding PieChartCommand}">
+                        <Button.Style>
+                            <Style TargetType="{x:Type Button}">
+                                <Setter Property="Background" Value="#008651" />
+                                <Setter Property="Foreground" Value="White"/>
+                                <Setter Property="BorderBrush" Value="DarkGreen"/>
+                                <Setter Property="BorderThickness" Value="1"/>
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="{x:Type Button}">
+                                            <Border Background="{TemplateBinding Background}" BorderBrush="#008651" BorderThickness="3" >
+                                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#00B56D"/>
+                                        <Setter Property="Foreground" Value="White"/>
+                                        <Setter Property="BorderBrush" Value="Red"/>
+                                        <Setter Property="BorderThickness" Value="3"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+
+                    <!-- Button 4 (CHART YEAR) -->
+                    <Button Margin="5" Padding="30" MinWidth="130" MinHeight="80" Content="Staafdiagram Jaar" Command="{Binding Chart2Command}">
+                        <Button.Style>
+                            <Style TargetType="{x:Type Button}">
+                                <Setter Property="Background" Value="#008651" />
+                                <Setter Property="Foreground" Value="White"/>
+                                <Setter Property="BorderBrush" Value="DarkGreen"/>
+                                <Setter Property="BorderThickness" Value="1"/>
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="{x:Type Button}">
+                                            <Border Background="{TemplateBinding Background}" BorderBrush="#008651" BorderThickness="3" >
+                                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#00B56D"/>
+                                        <Setter Property="Foreground" Value="White"/>
+                                        <Setter Property="BorderBrush" Value="Red"/>
+                                        <Setter Property="BorderThickness" Value="3"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+
+                    <!-- Team Name -->
+                    <StackPanel Orientation="Horizontal" MinHeight="215" >
+                        <Image VerticalAlignment="Bottom" Width="250" Source="content/hiphappening.png"></Image>
+                    </StackPanel>
+
+                    <!-- Legenda MAP -->
+                    <Border Background="White" BorderBrush="#008651" BorderThickness="0,6,0,0"  >
                         <StackPanel Orientation="Horizontal" MinHeight="10" >
                             <Rectangle  Width="10"  Height="0"/>
                             <TextBlock Text="Legenda Map " Margin="5"/>
                         </StackPanel>
-                        </Border>
-                        <StackPanel Orientation="Horizontal" MinHeight="10" >
+                    </Border>
+                    <StackPanel Orientation="Horizontal" MinHeight="10" >
                         <Rectangle  Width="10"  Height="30"/>
                         <Rectangle  Width="20"  Height="20" Fill="#008651" Opacity="0.7"/>
                         <TextBlock Text="Veilig" Margin="5"/>
@@ -186,7 +177,7 @@
                     </StackPanel>
                 </StackPanel>
             </Border>
-      <ContentControl x:Name="Pages" Content="{Binding SelectedViewModel}"></ContentControl>
+        <ContentControl x:Name="Pages" Content="{Binding SelectedViewModel}"></ContentControl>
 
     </DockPanel>
     </Border>

@@ -7,46 +7,47 @@
         mc:Ignorable="d"
         xmlns:m="clr-namespace:Microsoft.Maps.MapControl.WPF;assembly=Microsoft.Maps.MapControl.WPF" >
     <UserControl.Resources>
-    <ControlTemplate x:Key="CutomPushpinTemplate" TargetType="m:Pushpin">
-        <Grid x:Name="ContentGrid" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <StackPanel>
-                <Grid Margin="0" Width="50" Height="33">
-                    <Rectangle HorizontalAlignment="Left" Margin="-0.208,20.238,0,-0.146" Width="10.555" Fill="#FF005167" RenderTransformOrigin="0.5,0.5">
-                        <Rectangle.RenderTransform>
-                            <TransformGroup>
-                                <ScaleTransform/>
-                                <SkewTransform AngleX="-23"/>
-                                <RotateTransform Angle="-12.944"/>
-                                <TranslateTransform/>
-                            </TransformGroup>
-                        </Rectangle.RenderTransform>
-                    </Rectangle>
+        
+    <!-- Template/Theme For custom pin on Map -->
+        <ControlTemplate x:Key="CutomPushpinTemplate" TargetType="m:Pushpin">
+            <Grid x:Name="ContentGrid" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <StackPanel>
+                    <Grid Margin="0" Width="50" Height="33">
+                        <Rectangle HorizontalAlignment="Left" Margin="-0.208,20.238,0,-0.146" Width="10.555" Fill="#FF005167" RenderTransformOrigin="0.5,0.5" >
+                            <Rectangle.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform ScaleX="200" />
+                                    <SkewTransform AngleX="-23"/>
+                                    <RotateTransform Angle="-12.944"/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </Rectangle.RenderTransform>
+                        </Rectangle>
 
-                    <Rectangle Fill="White" Stroke="#FF005167" RadiusX="5" RadiusY="5"/>
+                        <Rectangle Fill="White" Stroke="#FF005167" RadiusX="5" RadiusY="5" />
 
-                    <ContentPresenter HorizontalAlignment="Center"
+                        <ContentPresenter HorizontalAlignment="Center"  
                                                                 VerticalAlignment="Center"
                                                                 Content="{TemplateBinding Content}"
                                                                 ContentTemplate="{TemplateBinding ContentTemplate}"
-                                                                Margin="0" TextBlock.FontFamily="Segoe UI" TextBlock.FontWeight="Bold" TextBlock.Foreground="#FFB8D30B">
-                    </ContentPresenter>
-                </Grid>
-            </StackPanel>
-        </Grid>
-    </ControlTemplate>
+                                                                Margin="0" TextBlock.FontSize="8" TextBlock.FontFamily="Segoe UI" TextBlock.FontWeight="Bold" TextBlock.Foreground="#FFB8D30B">
+                        </ContentPresenter>
+                    </Grid>
+                </StackPanel>
+            </Grid>
+        </ControlTemplate>
     </UserControl.Resources>
 
+    <!-- Initiate Bing map  -->
     <m:Map x:Name="MapWithPolygon" Grid.RowSpan="2"
                   Center="51.917460, 4.430036" ZoomLevel="11"
                   Mode="Road" 
-                  CredentialsProvider="AtpRhAYzndch3AqUr1PzBZN3cmcnOremPqynI7oxAuwTya6SQ1582q7N0nBXSucT" 
-                >
-            
-            <m:MapLayer x:Name="NewPolygonLayer">
+                  CredentialsProvider="AtpRhAYzndch3AqUr1PzBZN3cmcnOremPqynI7oxAuwTya6SQ1582q7N0nBXSucT">
 
-
-            </m:MapLayer>
-        </m:Map>
+        <!-- Layer on map For Pushpins -->
+        <m:MapLayer x:Name="NewPolygonLayer">
+        </m:MapLayer>
+    </m:Map>
 
 
 </UserControl>

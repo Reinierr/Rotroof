@@ -10,20 +10,23 @@ namespace RotRoof
 {
     class NavigationViewModel : INotifyPropertyChanged
     {
+        //Interfaces for Navigation windows
         public ICommand MapCommand { get; set; }
         public ICommand ChartCommand { get; set; }
         public ICommand Chart2Command { get; set; }
         public ICommand PieChartCommand { get; set; }
 
+        //HomePage
         private object selectedViewModel = new HomeViewModel();
 
+        //Select object
         public object SelectedViewModel
         {
             get { return selectedViewModel; }
             set { selectedViewModel = value; OnPropertyChanged("SelectedViewModel"); }
         }
 
-
+        //Add Command to your interfaces so it can be called
         public NavigationViewModel()
         {
             MapCommand = new BaseCommand(OpenMap);
