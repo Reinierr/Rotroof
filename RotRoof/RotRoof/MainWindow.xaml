@@ -35,7 +35,7 @@
                                                                 VerticalAlignment="Center"
                                                                 Content="{TemplateBinding Content}"
                                                                 ContentTemplate="{TemplateBinding ContentTemplate}"
-                                                                Margin="0" TextBlock.FontFamily="Segoe UI" TextBlock.FontWeight="Bold" TextBlock.Foreground="#FFB8D30B">
+                                                                Margin="0" TextBlock.FontFamily="Segoe UI" TextBlock.FontWeight="Bold" TextBlock.Foreground="#000">
                         </ContentPresenter>
                     </Grid>
                 </StackPanel>
