@@ -56,7 +56,7 @@ namespace RotRoof
             {
                 //roof 
                 Console.WriteLine(entry[0]);
-                GeocodeAddress(entry[0], 1, 1);
+                GeocodeAddress("Schiebroek", 1, 1);
 
 
             }
@@ -64,7 +64,7 @@ namespace RotRoof
             {
                 //roof 
                 Console.WriteLine(entry[0]);
-                GeocodeAddress(entry[0], 1, 1);
+                GeocodeAddress("Vogelenzang Rotterdam", 1, 1);
 
 
             }
