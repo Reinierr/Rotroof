@@ -39,14 +39,54 @@ namespace RotRoof
 
             //ConsoleManager.Show();
             InitializeComponent();
-
-
+            
+            
             //Set focus to map
             MapWithPolygon.Focus();
-        }
-      
 
-        private String GeocodeAddress(string address)
+            
+            DBConnection test = new DBConnection();
+            List<string> properties = new List<string>();
+            var MaxRoof = test.Select("SELECT MAX(name) FROM (SELECT neighbourhood.name from location, street, neighbourhood, robbery, item WHERE item.fk_robbery = robbery.uid AND item.fk_itemtype = 2 AND robbery.fk_location = location.uid AND location.fk_street = street.uid AND street.fk_neighbourhood = neighbourhood.uid) as name");
+            var MinRoof = test.Select("SELECT MIN(name) FROM (SELECT neighbourhood.name from location, street, neighbourhood, robbery, item WHERE item.fk_robbery = robbery.uid AND item.fk_itemtype = 2 AND robbery.fk_location = location.uid AND location.fk_street = street.uid AND street.fk_neighbourhood = neighbourhood.uid) as name");
+            var MaxFietsRoof = test.Select("SELECT MAX(name) FROM (SELECT neighbourhood.name from location, street, neighbourhood, robbery, item WHERE item.fk_robbery = robbery.uid AND item.fk_itemtype = 1 AND robbery.fk_location = location.uid AND location.fk_street = street.uid AND street.fk_neighbourhood = neighbourhood.uid) as name");
+            var MinFietsRoof = test.Select("SELECT MIN(name) FROM (SELECT neighbourhood.name from location, street, neighbourhood, robbery, item WHERE item.fk_robbery = robbery.uid AND item.fk_itemtype = 1 AND robbery.fk_location = location.uid AND location.fk_street = street.uid AND street.fk_neighbourhood = neighbourhood.uid) as name");
+
+            foreach (List<string> entry in MinFietsRoof)
+            {
+                //roof 
+                Console.WriteLine(entry[0]);
+                GeocodeAddress(entry[0], 1, 1);
+
+
+            }
+            foreach (List<string> entry in MinRoof)
+            {
+                //roof 
+                Console.WriteLine(entry[0]);
+                GeocodeAddress(entry[0], 1, 1);
+
+
+            }
+            foreach (List<string> entry in MaxRoof)
+            {
+                //roof 
+                    //Console.WriteLine("Buurtnaam waar het meeste roof word geshit = " + entry[0]);
+                GeocodeAddress(entry[0], 0 ,1);
+            }
+
+            foreach (List<string> entry in MaxFietsRoof)
+            {
+                //fietsroof 
+                //Console.WriteLine("Buurtnaam waar het meeste fietsroof word geshit = " + entry[0]);
+                GeocodeAddress(entry[0],0,1);
+            }
+            
+
+        }
+
+
+        private String GeocodeAddress(string address, int amount, int type)
         {
             string results = "";
             string key = "AtpRhAYzndch3AqUr1PzBZN3cmcnOremPqynI7oxAuwTya6SQ1582q7N0nBXSucT";
@@ -77,10 +117,23 @@ namespace RotRoof
                 results = String.Format("Latitude: {0}\nLongitude: {1}",
                   geocodeResponse.Results[0].Locations[0].Latitude,
                   geocodeResponse.Results[0].Locations[0].Longitude);
-
-                //CALL CREATEROUNDPOLY FUNCTION 
-                CreateRoundPoly(geocodeResponse.Results[0].Locations[0].Latitude,
-                  geocodeResponse.Results[0].Locations[0].Longitude);
+                if(type == 1)
+                {
+                    if(amount > 0)
+                    {
+                        CreateBigRoundPoly(geocodeResponse.Results[0].Locations[0].Latitude, geocodeResponse.Results[0].Locations[0].Longitude, address, "FFFFFF", "008651");
+                    }
+                    else
+                    {
+                        //CALL CREATEROUNDPOLY FUNCTION 
+                        CreateBigRoundPoly(geocodeResponse.Results[0].Locations[0].Latitude, geocodeResponse.Results[0].Locations[0].Longitude, address, "FFFFFF", "ed1212");
+                    }
+                    
+                }
+                else if(type == 2)
+                {
+                    CreateSmallRoundPoly(geocodeResponse.Results[0].Locations[0].Latitude, geocodeResponse.Results[0].Locations[0].Longitude, address,amount, "FFFFFF", "008651");
+                }
             }
             else
                 results = "No Results Found";
@@ -88,14 +141,14 @@ namespace RotRoof
             return results;
         }
 
-        public void CreateRoundPoly(double latitude, double longitude)
+        public void CreateSmallRoundPoly(double latitude, double longitude, string name,int amount, string borderColor, string fillColor)
         {
             newPolygon2 = new MapPolygon();
 
             // Defines the polygon fill details
             newPolygon2.Locations = new LocationCollection();
-            newPolygon2.Fill = new SolidColorBrush(Colors.Green);
-            newPolygon2.Stroke = new SolidColorBrush(Colors.DarkGreen);
+            newPolygon2.Fill = (SolidColorBrush)(new BrushConverter().ConvertFrom("#" + fillColor));
+            newPolygon2.Stroke = (SolidColorBrush)(new BrushConverter().ConvertFrom("#" + borderColor));
             newPolygon2.StrokeThickness = 3;
             newPolygon2.Opacity = 0.4;
 
@@ -104,14 +157,14 @@ namespace RotRoof
             //LATITUDE == HOOGTE & LONGITUDE == BREEDTE
             newPolygon2.Locations = new LocationCollection()
             {
-                new Microsoft.Maps.MapControl.WPF.Location(latitude - 0.001, longitude + 0.003),
-                new Microsoft.Maps.MapControl.WPF.Location(latitude + 0.001, longitude + 0.003),
-                new Microsoft.Maps.MapControl.WPF.Location(latitude + 0.002, longitude + 0.001),
-                new Microsoft.Maps.MapControl.WPF.Location(latitude + 0.002, longitude-0.001),
-                new Microsoft.Maps.MapControl.WPF.Location(latitude + 0.001, longitude - 0.003),
-                new Microsoft.Maps.MapControl.WPF.Location(latitude - 0.001, longitude - 0.003),
-                new Microsoft.Maps.MapControl.WPF.Location(latitude - 0.002, longitude - 0.001),
-                new Microsoft.Maps.MapControl.WPF.Location(latitude - 0.002, longitude + 0.001)
+                new Microsoft.Maps.MapControl.WPF.Location(latitude - 0.002, longitude + 0.004),
+                new Microsoft.Maps.MapControl.WPF.Location(latitude + 0.002, longitude + 0.004),
+                new Microsoft.Maps.MapControl.WPF.Location(latitude + 0.003, longitude + 0.002),
+                new Microsoft.Maps.MapControl.WPF.Location(latitude + 0.003, longitude-0.002),
+                new Microsoft.Maps.MapControl.WPF.Location(latitude + 0.002, longitude - 0.004),
+                new Microsoft.Maps.MapControl.WPF.Location(latitude - 0.002, longitude - 0.004),
+                new Microsoft.Maps.MapControl.WPF.Location(latitude - 0.003, longitude - 0.002),
+                new Microsoft.Maps.MapControl.WPF.Location(latitude - 0.003, longitude + 0.002)
             };
             MapWithPolygon.Children.Add(newPolygon2);
 
@@ -127,7 +180,55 @@ namespace RotRoof
             pin.PositionOrigin = PositionOrigin.BottomLeft;
 
             //TEXT IN PUSHPIN
-            pin.Content = "Test";
+            pin.Content = name;
+
+            pin.MouseDown += new MouseButtonEventHandler(pin_MouseDown);
+
+            // Adds the pushpin to the map.
+            MapWithPolygon.Children.Add(pin);
+
+
+        }
+        public void CreateBigRoundPoly(double latitude, double longitude, string name, string borderColor, string fillColor)
+        {
+            newPolygon2 = new MapPolygon();
+
+            // Defines the polygon fill details
+            newPolygon2.Locations = new LocationCollection();
+            newPolygon2.Fill = (SolidColorBrush)(new BrushConverter().ConvertFrom("#"+ fillColor));
+            newPolygon2.Stroke = (SolidColorBrush)(new BrushConverter().ConvertFrom("#"+ borderColor));
+            newPolygon2.StrokeThickness = 3;
+            newPolygon2.Opacity = 0.4;
+
+            //Set focus back to the map so that +/- work for zoom in/out
+            MapWithPolygon.Focus();
+            //LATITUDE == HOOGTE & LONGITUDE == BREEDTE
+            newPolygon2.Locations = new LocationCollection()
+            {
+                new Microsoft.Maps.MapControl.WPF.Location(latitude - 0.01, longitude + 0.03),
+                new Microsoft.Maps.MapControl.WPF.Location(latitude + 0.01, longitude + 0.03),
+                new Microsoft.Maps.MapControl.WPF.Location(latitude + 0.02, longitude + 0.01),
+                new Microsoft.Maps.MapControl.WPF.Location(latitude + 0.02, longitude-0.01),
+                new Microsoft.Maps.MapControl.WPF.Location(latitude + 0.01, longitude - 0.03),
+                new Microsoft.Maps.MapControl.WPF.Location(latitude - 0.01, longitude - 0.03),
+                new Microsoft.Maps.MapControl.WPF.Location(latitude - 0.02, longitude - 0.01),
+                new Microsoft.Maps.MapControl.WPF.Location(latitude - 0.02, longitude + 0.01)
+            };
+            MapWithPolygon.Children.Add(newPolygon2);
+
+
+            ControlTemplate template = (ControlTemplate)this.FindResource("CutomPushpinTemplate");
+
+
+
+            // The pushpin to add to the map.
+            Pushpin pin = new Pushpin();
+            pin.Location = new Microsoft.Maps.MapControl.WPF.Location(latitude, longitude);
+            pin.Template = template;
+            pin.PositionOrigin = PositionOrigin.BottomLeft;
+
+            //TEXT IN PUSHPIN
+            pin.Content = name;
 
             pin.MouseDown += new MouseButtonEventHandler(pin_MouseDown);
 
@@ -141,40 +242,8 @@ namespace RotRoof
             Console.WriteLine("Pinpoint Clicked Aids");
         }
         
-        private void CreatePoly(object sender, RoutedEventArgs e)
-        {
-            double X = 51.91714;
-            double Y = 4.49037;
-
-            CreateRoundPoly(X, Y);
-        }
-
-        private void GeocodeAddress(object sender, RoutedEventArgs e)
-        {
-            GeocodeAddress("Middeland");
-            /*string test = "0.00";
-            Random rnd = new Random();
-            int randNumber = rnd.Next(1, 10);
-
-            double add = Convert.ToDouble(test + randNumber);
-            Console.WriteLine(add);
-            
-
-            double Y = 51.91714 + add;
-            double X = 4.49037 + add;
-
-            CreateRoundPoly(Y, X);*/
-        }
-
-        private void ClearPolygon(object sender, RoutedEventArgs e)
-        {
-            labelResults.Content = GeocodeAddress("MIDDELAND");
-            //MapWithPolygon.Children.Clear();
-            /*MapWithPolygon.Children.Remove(newPolygon);
-            MapWithPolygon.Children.Remove(newPolygon2);*/
-        }
-
-
+        
+        
  
 
 
@@ -270,7 +339,7 @@ namespace RotRoof
                 Console.SetError(TextWriter.Null);
             }
         }
-         
+
         
     }
 }

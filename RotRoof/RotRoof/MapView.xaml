@@ -5,24 +5,43 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RotRoof"
         mc:Ignorable="d"
-        xmlns:m="clr-namespace:Microsoft.Maps.MapControl.WPF;assembly=Microsoft.Maps.MapControl.WPF">
+        xmlns:m="clr-namespace:Microsoft.Maps.MapControl.WPF;assembly=Microsoft.Maps.MapControl.WPF" >
+    <UserControl.Resources>
+    <ControlTemplate x:Key="CutomPushpinTemplate" TargetType="m:Pushpin">
+        <Grid x:Name="ContentGrid" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <StackPanel>
+                <Grid Margin="0" Width="50" Height="33">
+                    <Rectangle HorizontalAlignment="Left" Margin="-0.208,20.238,0,-0.146" Width="10.555" Fill="#FF005167" RenderTransformOrigin="0.5,0.5">
+                        <Rectangle.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform AngleX="-23"/>
+                                <RotateTransform Angle="-12.944"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Rectangle.RenderTransform>
+                    </Rectangle>
 
-    
+                    <Rectangle Fill="White" Stroke="#FF005167" RadiusX="5" RadiusY="5"/>
 
-        <m:Map x:Name="MapWithPolygon" Grid.RowSpan="2"
-                  Center="51.917460, 4.485536" ZoomLevel="13"
+                    <ContentPresenter HorizontalAlignment="Center"
+                                                                VerticalAlignment="Center"
+                                                                Content="{TemplateBinding Content}"
+                                                                ContentTemplate="{TemplateBinding ContentTemplate}"
+                                                                Margin="0" TextBlock.FontFamily="Segoe UI" TextBlock.FontWeight="Bold" TextBlock.Foreground="#FFB8D30B">
+                    </ContentPresenter>
+                </Grid>
+            </StackPanel>
+        </Grid>
+    </ControlTemplate>
+    </UserControl.Resources>
+
+    <m:Map x:Name="MapWithPolygon" Grid.RowSpan="2"
+                  Center="51.917460, 4.485536" ZoomLevel="12"
                   Mode="Road" 
                   CredentialsProvider="AtpRhAYzndch3AqUr1PzBZN3cmcnOremPqynI7oxAuwTya6SQ1582q7N0nBXSucT" 
                 >
-            <TextBlock x:Name="txtDescription" Margin="5"><InlineUIContainer>
-                		<Button x:Name="button" Content="Clear Polygon" Width="95" Click="ClearPolygon"/>
-            		</InlineUIContainer><InlineUIContainer>
-                		<Button x:Name="button2" Content="GeocodeAddress" Width="159" Click="GeocodeAddress"/>
-                	</InlineUIContainer><InlineUIContainer>
-            		<Label x:Name="labelResults" Content="Label" Height="54" Width="226"/>
-            	</InlineUIContainer><InlineUIContainer>
-	<Button x:Name="button1" Content="Create Polygon Func()" Width="135" Click="CreatePoly"/>
-                	</InlineUIContainer></TextBlock>
+            
             <m:MapLayer x:Name="NewPolygonLayer">
 
 
