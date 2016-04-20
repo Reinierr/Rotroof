@@ -39,49 +39,10 @@ namespace RotRoof
 
             //ConsoleManager.Show();
             InitializeComponent();
-            
-            
+
+
             //Set focus to map
             MapWithPolygon.Focus();
-            
-            
-            
-
-            /*newPolygon.Locations = new LocationCollection()
-            {
-                //51.917460, 4.485536
-                //51.9174, 4.4855 center
-                /*
-                Y  , X
-                78 , 55
-                76 , 57
-                74 , 59
-                72 , 57
-                70 , 55
-                72 , 53
-                74 , 51
-                76 , 53
-                78 , 55
-
-                
-                
-                
-                
-                //Y,X
-                //stappen van 4
-                //51.9174, 4.4855 center
-                new Location(51.9178, 4.4853),
-                new Location(51.9178, 4.4857),
-                new Location(51.9176, 4.4860),
-                new Location(51.9174, 4.4860),
-                new Location(51.9172, 4.4857),
-                new Location(51.9172, 4.4853),
-                new Location(51.9174, 4.4850),
-                new Location(51.9176, 4.4850)
-                
-            };
-            MapWithPolygon.Children.Add(newPolygon);*/
-
         }
       
 
