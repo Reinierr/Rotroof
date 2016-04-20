@@ -52,7 +52,7 @@
         <DockPanel LastChildFill="True">
             <Border Background="White" BorderBrush="#008651" BorderThickness="0,0,6,0"  >
                 <StackPanel DockPanel.Dock="Left" Background="White" MinWidth="250">
-                    <StackPanel Orientation="Horizontal" x:Name="navigation">
+                    
                         <Button Margin="5" Padding="30" MinHeight="80" MinWidth="130" Content="Map" Command="{Binding MapCommand}">
                             <Button.Style>
                                 <Style TargetType="{x:Type Button}">
@@ -80,7 +80,7 @@
                                 </Style>
                             </Button.Style>
                         </Button>
-                        <Button Margin="5" Padding="30" MinWidth="130" MinHeight="80" Content="Chart" Command="{Binding ChartCommand}">
+                        <Button Margin="5" Padding="30" MinWidth="130" MinHeight="80" Content="Staafdiagram Maand" Command="{Binding ChartCommand}">
                             <Button.Style>
                                 <Style TargetType="{x:Type Button}">
                                     <Setter Property="Background" Value="#008651" />
@@ -107,9 +107,8 @@
                                 </Style>
                             </Button.Style>
                         </Button>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal" MinHeight="10" >
-                        <Button Margin="5" Padding="30" MinWidth="130" MinHeight="80" Content="PieChart" Command="{Binding PieChartCommand}">
+
+                        <Button Margin="5" Padding="30" MinWidth="130" MinHeight="80" Content="Cirkeldiagram" Command="{Binding PieChartCommand}">
                             <Button.Style>
                                 <Style TargetType="{x:Type Button}">
                                     <Setter Property="Background" Value="#008651" />
@@ -136,7 +135,7 @@
                                 </Style>
                             </Button.Style>
                         </Button>
-                        <Button Margin="5" Padding="30" MinWidth="130" MinHeight="80" Content="Chart" Command="{Binding Chart2Command}">
+                        <Button Margin="5" Padding="30" MinWidth="130" MinHeight="80" Content="Staafdiagram Jaar" Command="{Binding Chart2Command}">
                             <Button.Style>
                                 <Style TargetType="{x:Type Button}">
                                     <Setter Property="Background" Value="#008651" />
@@ -163,8 +162,7 @@
                                 </Style>
                             </Button.Style>
                         </Button>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal" MinHeight="395" >
+                        <StackPanel Orientation="Horizontal" MinHeight="215" >
                     </StackPanel>
                     <Border Background="White" BorderBrush="#008651" BorderThickness="0,6,0,0"  >
                         <StackPanel Orientation="Horizontal" MinHeight="10" >
@@ -185,6 +183,7 @@
                 </StackPanel>
             </Border>
             <ContentControl x:Name="Pages" Content="{Binding SelectedViewModel}"/>
+            
         </DockPanel>
     </Border>
 </Window>

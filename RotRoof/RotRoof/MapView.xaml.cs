@@ -36,7 +36,7 @@ namespace RotRoof
 
         public MapView()
         {
-
+            
             //ConsoleManager.Show();
             InitializeComponent();
             
@@ -51,37 +51,20 @@ namespace RotRoof
             var MinRoof = test.Select("SELECT MIN(name) FROM (SELECT neighbourhood.name from location, street, neighbourhood, robbery, item WHERE item.fk_robbery = robbery.uid AND item.fk_itemtype = 2 AND robbery.fk_location = location.uid AND location.fk_street = street.uid AND street.fk_neighbourhood = neighbourhood.uid) as name");
             var MaxFietsRoof = test.Select("SELECT MAX(name) FROM (SELECT neighbourhood.name from location, street, neighbourhood, robbery, item WHERE item.fk_robbery = robbery.uid AND item.fk_itemtype = 1 AND robbery.fk_location = location.uid AND location.fk_street = street.uid AND street.fk_neighbourhood = neighbourhood.uid) as name");
             var MinFietsRoof = test.Select("SELECT MIN(name) FROM (SELECT neighbourhood.name from location, street, neighbourhood, robbery, item WHERE item.fk_robbery = robbery.uid AND item.fk_itemtype = 1 AND robbery.fk_location = location.uid AND location.fk_street = street.uid AND street.fk_neighbourhood = neighbourhood.uid) as name");
-            /*
-            foreach (List<string> entry in MinFietsRoof)
-            {
-                //roof 
-                Console.WriteLine(entry[0]);
-                GeocodeAddress("Schiebroek", 1, 1);
-
-
-            }
-            foreach (List<string> entry in MinRoof)
-            {
-                //roof 
-                Console.WriteLine(entry[0]);
-                GeocodeAddress("Vogelenzang Rotterdam", 1, 1);
-
-
-            }*/
+            
             foreach (List<string> entry in MaxRoof)
             {
-                //roof 
-                    //Console.WriteLine("Buurtnaam waar het meeste roof word geshit = " + entry[0]);
+                
                 GeocodeAddress(entry[0], 0 ,1);
             }
 
             foreach (List<string> entry in MaxFietsRoof)
             {
-                //fietsroof 
-                //Console.WriteLine("Buurtnaam waar het meeste fietsroof word geshit = " + entry[0]);
+                
                 GeocodeAddress(entry[0],0,1);
             }
-            
+            GeocodeAddress("Schiebroek", 1, 1);
+            GeocodeAddress("Vogelenzang Rotterdam", 1, 1);
 
         }
 
@@ -239,7 +222,8 @@ namespace RotRoof
         }
         private void pin_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            Console.WriteLine("Pinpoint Clicked Aids");
+           
+                MessageBox.Show("User clicked OK");
         }
         
         

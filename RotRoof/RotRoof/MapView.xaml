@@ -37,7 +37,7 @@
     </UserControl.Resources>
 
     <m:Map x:Name="MapWithPolygon" Grid.RowSpan="2"
-                  Center="51.917460, 4.485536" ZoomLevel="12"
+                  Center="51.917460, 4.430036" ZoomLevel="11"
                   Mode="Road" 
                   CredentialsProvider="AtpRhAYzndch3AqUr1PzBZN3cmcnOremPqynI7oxAuwTya6SQ1582q7N0nBXSucT" 
                 >
