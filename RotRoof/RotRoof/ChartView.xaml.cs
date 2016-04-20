@@ -91,7 +91,7 @@ namespace RotRoof
 
       foreach (List<string> entry in information)
       {
-        Color color = i % 2 == 0 ? (Color)ColorConverter.ConvertFromString("#AEAEAE") : (Color)ColorConverter.ConvertFromString("#EAEAEA");
+        Color color = i % 2 == 0 ? (Color)ColorConverter.ConvertFromString("#007555") : (Color)ColorConverter.ConvertFromString("#008651");
         _canvasPlaceSingleColor(myCanvas, color, Convert.ToInt32(entry[1]), i, information.Count, entry[0], max, min);
         i++;
       }
