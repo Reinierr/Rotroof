@@ -51,7 +51,7 @@ namespace RotRoof
             var MinRoof = test.Select("SELECT MIN(name) FROM (SELECT neighbourhood.name from location, street, neighbourhood, robbery, item WHERE item.fk_robbery = robbery.uid AND item.fk_itemtype = 2 AND robbery.fk_location = location.uid AND location.fk_street = street.uid AND street.fk_neighbourhood = neighbourhood.uid) as name");
             var MaxFietsRoof = test.Select("SELECT MAX(name) FROM (SELECT neighbourhood.name from location, street, neighbourhood, robbery, item WHERE item.fk_robbery = robbery.uid AND item.fk_itemtype = 1 AND robbery.fk_location = location.uid AND location.fk_street = street.uid AND street.fk_neighbourhood = neighbourhood.uid) as name");
             var MinFietsRoof = test.Select("SELECT MIN(name) FROM (SELECT neighbourhood.name from location, street, neighbourhood, robbery, item WHERE item.fk_robbery = robbery.uid AND item.fk_itemtype = 1 AND robbery.fk_location = location.uid AND location.fk_street = street.uid AND street.fk_neighbourhood = neighbourhood.uid) as name");
-
+            /*
             foreach (List<string> entry in MinFietsRoof)
             {
                 //roof 
@@ -67,7 +67,7 @@ namespace RotRoof
                 GeocodeAddress(entry[0], 1, 1);
 
 
-            }
+            }*/
             foreach (List<string> entry in MaxRoof)
             {
                 //roof 

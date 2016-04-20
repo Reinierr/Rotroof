@@ -17,6 +17,9 @@
         <DataTemplate DataType="{x:Type local:PieChartViewModel}">
           <local:PieChartView/>
         </DataTemplate>
+        <DataTemplate DataType="{x:Type local:ChartView2Model}">
+          <local:ChartView2/>
+        </DataTemplate>
     <ControlTemplate x:Key="CutomPushpinTemplate" TargetType="m:Pushpin">
             <Grid x:Name="ContentGrid" HorizontalAlignment="Center" VerticalAlignment="Center">
                 <StackPanel>
@@ -133,7 +136,7 @@
                                 </Style>
                             </Button.Style>
                         </Button>
-                        <Button Margin="5" Padding="30" MinWidth="130" MinHeight="80" Content="Chart" Command="{Binding ChartCommand}">
+                        <Button Margin="5" Padding="30" MinWidth="130" MinHeight="80" Content="Chart" Command="{Binding Chart2Command}">
                             <Button.Style>
                                 <Style TargetType="{x:Type Button}">
                                     <Setter Property="Background" Value="#008651" />
