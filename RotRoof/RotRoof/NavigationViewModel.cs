@@ -15,7 +15,7 @@ namespace RotRoof
         public ICommand Chart2Command { get; set; }
         public ICommand PieChartCommand { get; set; }
 
-        private object selectedViewModel;
+        private object selectedViewModel = new HomeViewModel();
 
         public object SelectedViewModel
         {

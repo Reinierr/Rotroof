@@ -8,6 +8,9 @@
         xmlns:m="clr-namespace:Microsoft.Maps.MapControl.WPF;assembly=Microsoft.Maps.MapControl.WPF"
         Title="RotRoof" Height="720" Width="1000" ResizeMode="NoResize">
     <Window.Resources>
+        <DataTemplate DataType="{x:Type local:HomeViewModel}">
+          <local:HomeView/>
+        </DataTemplate>
         <DataTemplate DataType="{x:Type local:MapViewModel}">
             <local:MapView/>
         </DataTemplate>
@@ -182,8 +185,8 @@
                     </StackPanel>
                 </StackPanel>
             </Border>
-            <ContentControl x:Name="Pages" Content="{Binding SelectedViewModel}"/>
-            
-        </DockPanel>
+      <ContentControl x:Name="Pages" Content="{Binding SelectedViewModel}"></ContentControl>
+
+    </DockPanel>
     </Border>
 </Window>
